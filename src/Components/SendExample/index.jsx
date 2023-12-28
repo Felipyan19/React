@@ -6,33 +6,38 @@ const SendExample = () => {
 
   const context = useContext(MasivosContext);
 
+  let varDetailSend = context.detailSend;
+
   const [clicktosend, setClicktosend] = useState(false);
 
   useEffect(() => {
+
     if (clicktosend) {
+
       const token = context.tokenUser;
       const client = context.homeDataClient.attributes.Client
       const phone = context.numeroEjemplo
       const template = context.plantilla
       const image = context.urlTemplate
-      if(context.urlImage){
+
+      if (context.urlImage) {
         context.handleSendTemplate(token, client, phone, template, image).then((response) => {
           if (response) {
-            Swal.fire({
-              icon: 'success',
-              title: 'Enviado',
-              text: 'respuesta' + JSON.stringify(response),
-            })
+            response.error ? varDetailSend = { procesado: '1', correctos: '0', incorrectos: '1' }
+              : varDetailSend = { procesado: '1', correctos: '1', incorrectos: '0' }
+
+            context.setDetailSend(varDetailSend)
+            context.setShowToast(true);
           }
         })
-      }else{
+      } else {
         context.handleSendMensaje(token, client, phone, template).then((response) => {
           if (response) {
-            Swal.fire({
-              icon: 'success',
-              title: 'Enviado',
-              text: 'respuesta' + JSON.stringify(response),
-            })
+            response.error ? varDetailSend = { procesado: '1', correctos: '0', incorrectos: '1' }
+              : varDetailSend = { procesado: '1', correctos: '1', incorrectos: '0' }
+
+            context.setDetailSend(varDetailSend)
+            context.setShowToast(true);
           }
         })
       }
@@ -64,7 +69,6 @@ const SendExample = () => {
         >
           Enviar
         </button>
-
       </div>
     </>
   );

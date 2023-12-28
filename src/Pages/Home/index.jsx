@@ -5,6 +5,7 @@ import { SendExcel } from '../../Components/SendExcel';
 import { Template } from '../../Components/Template';
 import SendExample from '../../Components/SendExample';
 import { ImgTemplate } from '../../Components/ImgTemplate';
+import { MySend } from '../../Components/MySend';
 
 function Home() {
   const context = useContext(MasivosContext);
@@ -36,13 +37,15 @@ function Home() {
               
             </div>
           </div>
-          <div className="ml-6">
+          <div className="ml-6">  
 
-              <ImgTemplate className="w-full" />
+          <ImgTemplate configStyle={false} />
  
           </div>
         </div>
+    <MySend />
     </Layout>
+    
   );
 }
 

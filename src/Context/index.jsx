@@ -89,6 +89,9 @@ export const MasivosProvider = ({ children }) => {
   ]);
 
   const [urlImage, setUrlImage] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const [detailSend, setDetailSend] = useState({});
 
   return (
     <MasivosContext.Provider
@@ -135,7 +138,11 @@ export const MasivosProvider = ({ children }) => {
         setNotificaciones,
         urlImage,
         setUrlImage,
-        handleCampains      
+        handleCampains,
+        showToast,
+        setShowToast,
+        detailSend,
+        setDetailSend,     
       }}
     >
       {children}

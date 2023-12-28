@@ -5,7 +5,6 @@ import { IoListCircle } from "react-icons/io5";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
 import './styles.css';
-import { icon } from '@fortawesome/fontawesome-svg-core';
 
 const Form = async (tokenUser, title, mode, fields, api) => {
 

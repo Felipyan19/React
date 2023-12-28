@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { MasivosContext } from '../../Context';
 import cel from '../../Assets/cel.svg';
 
-const ImgTemplate = () => {
+const ImgTemplate = ({configStyle}) => {
   const context = useContext(MasivosContext);
 
   useEffect(() => {
@@ -22,13 +22,13 @@ const ImgTemplate = () => {
   return (
     <>
       <div
-        className="w-full h-full bg-cover bg-center bg-no-repeat"
+        className={`w-full h-full ${configStyle ? 'bg-contain' : 'bg-cover'} bg-center bg-no-repeat`}
         style={{ backgroundImage: `url(${cel})` }}
       >
-        <ul className="w-64 h-full flex flex-col justify-between">
-          <li className="bg-[#008069] my-4 mx-6 flex items-center">
+        <ul className={`${configStyle ? 'w-60' : 'w-64'} h-full flex flex-col justify-between`}>
+          <li className={`bg-[#008069] ${configStyle ? 'my-3 mx-11' : 'my-4 mx-6'} flex items-center`}>
             <img
-              className="w-7 h-7 rounded-full m-2 mr-2"
+              className={`${configStyle ? 'w-4 h-4' : 'w-7 h-7'}  rounded-full m-2 mr-2`}
               src={context.homeDataClient.attributes.image}
               alt="Client"
             />
@@ -36,7 +36,7 @@ const ImgTemplate = () => {
               {context.homeDataClient.attributes.Client}
             </p>
           </li>
-          <li className="ml-9 mr-4 mb-20 text-xs bg-[#E2FFC7] p-3 rounded-lg">
+          <li className={`${configStyle ? 'ml-12 mr-10 mb-14' : 'ml-9 mr-4 mb-20'} text-xs bg-[#E2FFC7] p-3 rounded-lg`}>
             {context.isImage ? (
               <div className="max-h-48 overflow-y-auto scrollbar-hide">
                 <img
