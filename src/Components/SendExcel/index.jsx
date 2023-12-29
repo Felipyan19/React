@@ -16,6 +16,7 @@ const SendExcel = () => {
 
   const [dataExcel, setDataExcel] = useState([]);
   
+  
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -38,30 +39,60 @@ const SendExcel = () => {
 
   const sendExcelData = async () => {
     let counter = 0;
+    let incorrectos = 0;
+    let correctos = 0;
+    context.setStartSend(true);
+    context.setShowToast(true);
+    context.setSubmitButtonClicked(false);
 
+  
     for (const item of dataExcel) {
+      
+      // if (!context.startSend) {
+      //   break;
+      // }
+  
+      counter++;
+
+      let response = '';
+
       try {
-        let response;
         if (context.urlImage) {
-            response = await context.handleSendTemplate(token, client, item[1], template, image);
+          response = await context.handleSendTemplate(token, client, item[1], template, image);
         } else {
-            response = await context.handleSendMensaje(token, client, item[1], template);
+          response = await context.handleSendMensaje(token, client, item[1], template);
         }
-        console.log(response);
-        counter++; 
-        console.log(`Template sent count: ${counter}`); 
-
-        context.setDetailsExcel(prevDetails => [
-          ...prevDetails,
-          { id: item[0], number: item[1], status: response }
-        ]);
+  
+        if (response.attributes.code_status === 200) {
+          correctos++;
+        } else {
+          incorrectos++;
+          await context.setDataError(prevData => [...prevData, { id: item[0], number: item[1], status: response }]);
+        }
       } catch (error) {
-        console.error('Error sending template:', error);
+        incorrectos++;
+        await context.setDataError(prevData => [...prevData, { id: item[0], number: item[1], status: response }]);
       }
-    }
+  
+      await context.setDetailSend({
+        procesado: counter,
+        correctos: correctos,
+        incorrectos: incorrectos
+      });
 
-    console.log(`Total templates sent: ${counter}`); // Print the total count after the loop
+      response.wa_id = item[1];
+
+      await context.setSendHistory(prevData => [...prevData, response]);
+    }
+  
+    console.log(await context.dataError);
+    
   };
+
+  useEffect(() => {
+    console.log('DataError has updated:', context.dataError);
+  }, [context.dataError]);
+
 
   const handleclickSendExcel = () => {
     if (context.excelLength > 0 && context.plantilla) {

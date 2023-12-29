@@ -27,21 +27,22 @@ export const MasivosProvider = ({ children }) => {
   const [urlTemplate, setUrlTemplate] = useState('');
   const [numeroEjemplo,setNumeroEjemplo] = useState(0);
   const [isImage, setIsImage] = useState(false);
+  const [startSend, setStartSend] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    
+     
     if (email !== '' && password !== '' && submitButtonClicked === true) {
           Modal('question', 'Validando credenciales...');
       handleLogin(email, password).then(result => {
-        if (result.data && result.data?.attributes?.name) {
+        if (result?.data && result.data?.attributes?.name) {
           const welcome = '¡Bienvenido! ' + result.data.attributes.name;
           Modal('success', welcome);
           setTokenUser(result.data.attributes.token);
           setUserLogin(result.data);
           setLogin(true);
-          navigate('/Menu');
+         navigate('/Menu');
         } else {
           Modal('error', 'Credenciales incorrectas');
           setSubmitButtonClicked(false);
@@ -72,26 +73,21 @@ export const MasivosProvider = ({ children }) => {
   const [detailsExcel, setDetailsExcel] = useState([]);
   const [excelLength, setExcelLength] = useState(0);
 
-  useEffect(() => {
-    if(detailsExcel.length === excelLength){
-      console.log('soy respuestas : '+detailsExcel);
-      setNotificaciones(prevDetails => [
-        ...prevDetails, 
-        {titulo:'Envio Completado',texto:detailsExcel.length+' registros cargados'},
-    ]);
-    }
-  },[detailsExcel])
-
-  const [Notificaciones, setNotificaciones] = useState([
-    {titulo:'Cargue exitoso',texto:'Masivos dibanka-superApp'},
-    {titulo:'Cargue Fallido',texto:'Masivos dibanka-otrapantilla'},
-    {titulo:'Cargue Fallido',texto:'Masivos dibanka-ay yayai'},
-  ]);
+  const [Notificaciones, setNotificaciones] = useState([]);
 
   const [urlImage, setUrlImage] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
   const [detailSend, setDetailSend] = useState({});
+
+  const [dataError, setDataError] = useState([]);
+
+  const [sendHistory, setSendHistory] = useState([]);
+
+  const [showNotification, setShowNotification] = useState(false);
+
+  const [numberFail, setNumberFail] = useState(false);
+
 
   return (
     <MasivosContext.Provider
@@ -142,7 +138,17 @@ export const MasivosProvider = ({ children }) => {
         showToast,
         setShowToast,
         detailSend,
-        setDetailSend,     
+        setDetailSend,
+        dataError,
+        setDataError,
+        startSend,
+        setStartSend,
+        sendHistory,
+        setSendHistory,
+        showNotification,
+        setShowNotification,
+        numberFail,
+        setNumberFail
       }}
     >
       {children}

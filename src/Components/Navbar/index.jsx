@@ -8,6 +8,7 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import { HiMiniCog6Tooth } from "react-icons/hi2";
 import { MdNotifications } from "react-icons/md";
 import { MdNotificationsActive } from "react-icons/md";
+import { MyNotification } from '../MyNotification';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
@@ -35,19 +36,20 @@ const Navbar = () => {
   };
 
   const toast = () => {
-    const ToastSwal = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      showCloseButton: true,
-    });
-    ToastSwal.fire({
-      icon: '',
-      title: 'Notificaciones',
-      html: textNotifications().join(''),
-    });
-    context.setNotificaciones([]);
-    console.log('hola mundo '+  context.detailsExcel?.length );
+    // const ToastSwal = Swal.mixin({
+    //   toast: true,
+    //   position: 'top-end',
+    //   showConfirmButton: false,
+    //   showCloseButton: true,
+    // });
+    // ToastSwal.fire({
+    //   icon: '',
+    //   title: 'Notificaciones',
+    //   html: textNotifications().join(''),
+    // });
+    // context.setNotificaciones([]);
+    // console.log('hola mundo ' + context.detailsExcel?.length);
+    context.setShowNotification(true);
   }
 
   const restore = () => {
@@ -59,10 +61,11 @@ const Navbar = () => {
   };
 
   return context.login ? (
+    <>
     <nav className={`bg-[#0096C8] fixed z-10 top-0 w-full h-28 text-sm font-light ${isScrolled ? 'shadow' : ''}`}>
       <div className="container mx-auto m-3">
         <div className="flex justify-between items-center">
-          
+
           <ul className="flex items-center gap-6">
             <li className="font-semibold text-lg">
               <NavLink to="/Menu" className="text-blue-500 hover:underline">
@@ -73,8 +76,8 @@ const Navbar = () => {
 
           <ul className="flex items-center gap-6">
 
-          <li className="text-white flex items-center text-xl gap-2">
-              <FaUserCircle className='text-3xl'/>
+            <li className="text-white flex items-center text-xl gap-2">
+              <FaUserCircle className='text-3xl' />
               <p className="text-white text-lg font-bold">
                 {name}
               </p>
@@ -84,10 +87,10 @@ const Navbar = () => {
               {context.Notificaciones.length > 0 ? (
                 <MdNotificationsActive onClick={() => { toast(); }} />
               ) : (
-                <MdNotifications />
-                )}
+                <MdNotifications onClick={() => { toast(); }} />
+              )}
               <NavLink to="/Config" className="text-white text-3xl font-bold ml-1">
-              <HiMiniCog6Tooth />
+                <HiMiniCog6Tooth />
               </NavLink>
             </li>
 
@@ -102,6 +105,8 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+      <MyNotification />
+      </>
   ) : null;
 };
 

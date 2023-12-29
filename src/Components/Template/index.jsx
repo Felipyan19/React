@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FcRefresh } from "react-icons/fc";
+import { RiRefreshLine } from "react-icons/ri";
 import { MasivosContext } from '../../Context';
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
@@ -35,13 +35,17 @@ const Template = () => {
                         </option>
                     ))}
                 </select>
-                <FcRefresh className='m-2 text-3xl text-[#0096C8] cursor-pointer' onClick={() => {
+                <div className='ml-2 flex justify-end text-3xl text-[#0096C8] font-bold'
+                 onClick={() => {
                     context.refreshTemplates(context.tokenUser, context.homeDataClient?.id)
                     Swal.fire({
                         icon: 'success',
                         title: 'Actualizado',
-                    })
-                }} />
+                    })}}
+                    >
+                    <RiRefreshLine />
+                </div>
+
             </div>
             <>
                 <p className="text-black text-opacity-60 text-sm ">

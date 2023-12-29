@@ -8,41 +8,44 @@ const SendExample = () => {
 
   let varDetailSend = context.detailSend;
 
-  const [clicktosend, setClicktosend] = useState(false);
+  const sendExampleData = () => {
+    
+    const token = context.tokenUser;
+    const client = context.homeDataClient.attributes.Client
+    const phone = context.numeroEjemplo
+    const template = context.plantilla
+    const image = context.urlTemplate
+  
+    if (context.urlImage) {
+      
+      context.handleSendTemplate(token, client, phone, template, image).then((response) => {
+        if (response) {
+          response.error ? varDetailSend = { procesado: '1', correctos: '0', incorrectos: '1' }
+            : varDetailSend = { procesado: '1', correctos: '1', incorrectos: '0' }
+  
+          context.setDetailSend(varDetailSend)
+          response.wa_id = phone;
+          context.setSendHistory(prevData => [...prevData, response]);
 
-  useEffect(() => {
+        }
+      })
+    } else {
 
-    if (clicktosend) {
-
-      const token = context.tokenUser;
-      const client = context.homeDataClient.attributes.Client
-      const phone = context.numeroEjemplo
-      const template = context.plantilla
-      const image = context.urlTemplate
-
-      if (context.urlImage) {
-        context.handleSendTemplate(token, client, phone, template, image).then((response) => {
-          if (response) {
-            response.error ? varDetailSend = { procesado: '1', correctos: '0', incorrectos: '1' }
-              : varDetailSend = { procesado: '1', correctos: '1', incorrectos: '0' }
-
+      context.handleSendMensaje(token, client, phone, template).then((response) => {
+        if (response) {
+          response.error ? varDetailSend = { procesado: '1', correctos: '0', incorrectos: '1' }
+            : varDetailSend = { procesado: '1', correctos: '1', incorrectos: '0' }
+  
             context.setDetailSend(varDetailSend)
-            context.setShowToast(true);
-          }
-        })
-      } else {
-        context.handleSendMensaje(token, client, phone, template).then((response) => {
-          if (response) {
-            response.error ? varDetailSend = { procesado: '1', correctos: '0', incorrectos: '1' }
-              : varDetailSend = { procesado: '1', correctos: '1', incorrectos: '0' }
-
-            context.setDetailSend(varDetailSend)
-            context.setShowToast(true);
-          }
-        })
-      }
+            response.wa_id = phone;
+            context.setSendHistory(prevData => [...prevData, response]);
+          
+        }
+      })
     }
-  }, [clicktosend])
+  }
+
+    
 
   return (
     <>
@@ -64,7 +67,9 @@ const SendExample = () => {
           type="button"
           className="ml-2 mr-20 bg-[#0096C8] w-24 text-white text-sm rounded-lg focus:ring-2 focus:border-2 p-2 my-2 "
           onClick={() => {
-            setClicktosend(!clicktosend)
+            sendExampleData();
+            context.setShowToast(true);
+            context.setExcelLength('1');
           }}
         >
           Enviar
