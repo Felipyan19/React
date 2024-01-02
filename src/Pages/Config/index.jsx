@@ -3,6 +3,7 @@ import { MasivosContext } from '../../Context/index.jsx';
 import { Layout } from '../../Components/Layout';
 import { IoListCircle } from "react-icons/io5";
 import { IoPeopleCircleSharp } from "react-icons/io5";
+import { FaUsersCog } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import './styles.css';
 
@@ -81,6 +82,7 @@ const Config = () => {
       <div className="flex justify-center items-center">
         <Box title='Usuarios' emoji={<IoPeopleCircleSharp />} />
         <Box title='Campañas' emoji={<IoListCircle />} />
+        <Box title='Usuarios por campañas' emoji={<FaUsersCog />} />
       </div>
     </Layout>
   );

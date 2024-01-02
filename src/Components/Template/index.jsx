@@ -16,7 +16,7 @@ const Template = () => {
                 <select
                     id="selectPlantilla"
                     className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:border-2 p-2 my-2"
-                    value={context.plantilla} // Utiliza el estado para controlar el valor actual
+                    value={context.plantilla}
                     onChange={(e) => {
                         const selectedTemplate = context.getTemplates.find(template => template.name === e.target.value);
                         if (selectedTemplate) {
@@ -36,31 +36,39 @@ const Template = () => {
                     ))}
                 </select>
                 <div className='ml-2 flex justify-end text-3xl text-[#0096C8] font-bold'
-                 onClick={() => {
-                    context.refreshTemplates(context.tokenUser, context.homeDataClient?.id)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Actualizado',
-                    })}}
-                    >
+                    onClick={() => {
+                        context.refreshTemplates(context.tokenUser, context.homeDataClient?.id)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Actualizado',
+                        })
+                    }}
+                >
                     <RiRefreshLine />
                 </div>
 
             </div>
-            <>
-                <p className="text-black text-opacity-60 text-sm ">
-                    Ingrese la URL de la plantilla.
+            {context.urlImage ? (
+                <>
+                    <p className="text-black text-opacity-60 text-sm ">
+                        Ingrese la Url de la imagen de la plantilla
+                    </p>
+                    <input
+                        id="MiUrl"
+                        type="text"
+                        placeholder="URL de la plantilla"
+                        onChange={(e) => {
+                            context.setUrlTemplate(e.target.value);
+                        }}
+                        className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:border-2 p-2 my-2"
+                    />
+                </>
+            ) : (
+                <p className="text-black text-opacity-60 text-sm my-6 mx-2">
+                        Esta plantilla no posee una imagen
                 </p>
-                <input
-                    id="MiUrl"
-                    type="text"
-                    placeholder="URL de la plantilla"
-                    onChange={(e) => {
-                        context.setUrlTemplate(e.target.value);
-                    }}
-                    className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:border-2 p-2 my-2"
-                />
-            </>
+                
+            )}
 
         </>
     );

@@ -67,6 +67,9 @@ export const MasivosProvider = ({ children }) => {
       },
       'Campañas': {
         'Crear': { fields: ['name', 'token_meta', 'phone_id', 'waba_id', 'users', 'image'], api: handleClient },
+      },
+      'Usuarios por campañas': {
+        'Crear': { fields: ['name', 'token_meta', 'phone_id', 'waba_id', 'users', 'image'], api: handleClient },
       }
     });
 

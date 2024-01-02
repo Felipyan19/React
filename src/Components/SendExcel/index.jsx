@@ -48,11 +48,11 @@ const SendExcel = () => {
   
     for (const item of dataExcel) {
       
-      // if (!context.startSend) {
+       counter++;
+      // if (counter > 10) {
       //   break;
       // }
   
-      counter++;
 
       let response = '';
 
@@ -158,3 +158,4 @@ const SendExcel = () => {
 }
 
 export { SendExcel }
+

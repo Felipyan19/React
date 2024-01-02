@@ -37,7 +37,7 @@ const ImgTemplate = ({configStyle}) => {
             </p>
           </li>
           <li className={`${configStyle ? 'ml-12 mr-9 mb-20' : 'ml-9 mr-4 mb-20'} text-xs bg-[#E2FFC7] p-3 rounded-lg`}>
-            {context.isImage ? (
+            {(context.isImage && context.urlTemplate) ? (
               <div className={`${configStyle ? 'max-h-36' : 'max-h-48'}  overflow-y-auto scrollbar-hide`}>
                 <img
                   src={context.urlTemplate}
