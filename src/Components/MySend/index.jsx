@@ -86,10 +86,10 @@ const MySend = () => {
                                 {!context.numberFail ? (
                                     [...context.sendHistory].reverse().map((result, index) => (
                                     <div key={index} className="p-2 my-1 border-b flex justify-between mx-4">
-                                        <p className={result.attributes?.code_status ? "text-green text-opacity-60 text-sm" : "text-red-600 text-opacity-60 text-sm"}>
+                                        <p className={result.attributes?.code_status === '200' ? "text-green text-opacity-60 text-sm mr-6" : "text-red-600 text-opacity-60 text-sm mr-6"}>
                                         estado : {result.attributes?.code_status || '400'}
                                         </p>
-                                        <p className="text-black text-opacity-60 text-sm">
+                                        <p className="text-black text-opacity-60 text-sm mr-6">
                                         numero : {result.attributes?.wa_id || result?.wa_id}
                                         </p>
                                     </div>
@@ -97,9 +97,8 @@ const MySend = () => {
                                 ) : ( 
                                     [...context.dataError].reverse().map((result, index) => (
                                     <div key={index} className="p-2 my-1 border-b flex justify-between mx-4">
-                                        <p className={result.attributes?.code_status ? "text-green text-opacity-60 text-sm" : "text-red-600 text-opacity-60 text-sm"}>
+                                        <p className={result.attributes?.code_status === '200' ? "text-green text-opacity-60 text-sm" : "text-red-600 text-opacity-60 text-sm"}>
                                         soy : {result.attributes?.code_status || '400'}
-                                        {console.log('hola mundo'.result)}
                                         </p>
                                         <p className="text-black text-opacity-60 text-sm">
                                         soy : {result.attributes?.wa_id || result?.wa_id}
@@ -107,6 +106,7 @@ const MySend = () => {
                                     </div>
                                     ))
                                 )}
+
                                 </div>
                             </div>
                             <div className="bg-white rounded-lg shadow-lg p-4 m-1   flex justify-between items-center">

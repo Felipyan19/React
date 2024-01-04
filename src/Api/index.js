@@ -37,8 +37,9 @@ const handleCampains = async (token) => {
     });
 
     const result = await response.json();
-
+    
     return result;
+
 
   } catch (error) {
     console.log('Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.');
@@ -83,6 +84,7 @@ const handleClient = async (
     myHeaders.append("Accept", "application/json");
     myHeaders.append('Authorization', 'Bearer ' + token);
     const formData = new FormData();
+    formData.append('status', '1');
     formData.append('name', name);
     formData.append('token', tokenMeta);
     formData.append('phone_id', phone_id);
@@ -219,6 +221,30 @@ const handleSendMensaje = async (token, client, phone, template) => {
   }
 }
 
+const handleTokenRefresh = async ( token ) => {
+
+  try {
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append('Authorization', 'Bearer ' + token);
+  
+    const response = await fetch(url + `/refresh-token`, {
+      method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+    });
+
+    const result = await response.json();
+
+    return result;
+
+  } catch (error) {
+    console.log(
+      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
+    );
+  }
+}
+
 export {
   handleLogin,
   handleCampains,
@@ -227,5 +253,6 @@ export {
   handleGetTemplate,
   handleSendTemplate,
   refreshTemplates,
-  handleSendMensaje
+  handleSendMensaje,
+  handleTokenRefresh
 };

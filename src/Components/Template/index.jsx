@@ -42,6 +42,7 @@ const Template = () => {
                             icon: 'success',
                             title: 'Actualizado',
                         })
+                        context.handleGetTemplate(context.tokenUser, context.homeDataClient?.id)
                     }}
                 >
                     <RiRefreshLine />

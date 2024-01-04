@@ -1,14 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { MasivosContext } from '../../Context';
-import { ImgTemplate } from '../../Components/ImgTemplate';
-import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const MyNotification = () => {
     const context = useContext(MasivosContext);
 
     const closeToast = () => {
-        context.setDetailSend({ procesado: '0', correctos: '0', incorrectos: '0' });
-        context.setExcelLength('0');
         context.setShowNotification(false);
     };
 
@@ -24,10 +20,6 @@ const MyNotification = () => {
             window.removeEventListener('click', handleOutsideClick);
         };
     }, []);
-
-    const startStop = () => {
-        context.setStartSend(true);
-    }
 
     return (
         <>

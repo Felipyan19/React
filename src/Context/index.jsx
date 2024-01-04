@@ -8,7 +8,8 @@ import {
   handleGetTemplate, 
   handleSendTemplate, 
   refreshTemplates,
-  handleSendMensaje
+  handleSendMensaje,
+  handleTokenRefresh
 } from '../Api';
 import { Modal } from '../Utils/Modal';
 
@@ -90,6 +91,24 @@ export const MasivosProvider = ({ children }) => {
   const [showNotification, setShowNotification] = useState(false);
 
   const [numberFail, setNumberFail] = useState(false);
+
+  useEffect(() => {
+
+    if(tokenUser){
+    const intervalId = setInterval(() => {
+      handleTokenRefresh(tokenUser).then(result => {
+        if (result) {
+          setTokenUser(result.token);
+        }
+      })
+    }, 0.5 * 60 * 1000); 
+
+    return () => clearInterval(intervalId);
+  }
+
+  }, [tokenUser])
+
+
 
 
   return (

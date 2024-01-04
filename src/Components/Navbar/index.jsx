@@ -84,10 +84,13 @@ const Navbar = () => {
             </li>
 
             <li className="text-white text-3xl font-bold cursor-pointer flex mx-2">
-              {context.Notificaciones.length > 0 ? (
-                <MdNotificationsActive onClick={() => { toast(); }} />
+              {context.newNotifications ? (
+                <div className='relative'> 
+                  <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                  <MdNotificationsActive onClick={() => { toast(); }} />
+                </div>
               ) : (
-                <MdNotifications onClick={() => { toast(); }} />
+                  <MdNotifications onClick={() => { toast(); }} />
               )}
               <NavLink to="/Config" className="text-white text-3xl font-bold ml-1">
                 <HiMiniCog6Tooth />
