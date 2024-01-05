@@ -9,6 +9,7 @@ const MySend = () => {
     const closeToast = () => {
         context.setExcelLength('0');
         context.setShowToast(false);
+        context.setNewNotifications(true)
         const plantillaNotificaciones = context.detailSend;
         plantillaNotificaciones.plantilla = context.plantilla;
         context.setNotificaciones(prevData => 
@@ -16,21 +17,9 @@ const MySend = () => {
         context.setDetailSend({ procesado: '0', correctos: '0', incorrectos: '0' });
         };
 
-    const handleOutsideClick = (event) => {
-        if (event.target.id === "toast-overlay") {
-            closeToast();
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('click', handleOutsideClick);
-        return () => {
-            window.removeEventListener('click', handleOutsideClick);
-        };
-    }, []);
 
     const startStop = () => {
-        context.setStartSend(true);
+        context.setIsRuning(!context.isRuning);
     }
     const numberFail = () => {
         context.setNumberFail(!context.numberFail);
@@ -43,17 +32,20 @@ const MySend = () => {
                 <div
                     id="toast-overlay"
                     className="fixed inset-0 flex items-center justify-center z-50 "
-                    onClick={closeToast}
+                    
                 >
                     <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                     <div
                         className="relative mx-auto p-4 shadow-lg bg-[#f9f9f9] rounded-lg z-10 flex"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <IoIosCloseCircleOutline
-                            className="absolute top-0 right-0 text-4xl text-white m-4 cursor-pointer"
+                        {(context.detailSend.procesado === context.excelLength) && (
+                            <IoIosCloseCircleOutline
+                            className="absolute top-0 right-0 text-4xl text-black m-4 cursor-pointer"
                             onClick={closeToast}
-                        />
+                            />
+                            
+                        )}
                         <div className="flex justify-center ">
                             <ImgTemplate configStyle={true} />
                         </div>
@@ -116,8 +108,9 @@ const MySend = () => {
                                     <button className="bg-sky-600 text-white rounded-lg p-2" onClick={numberFail}>
                                         Numeros Erroneos
                                     </button>
-                                    : <button className="bg-sky-600 text-white rounded-lg p-2" onClick={startStop}>
-                                    Parar
+                                    :
+                                    <button className="bg-sky-600 text-white rounded-lg p-2" onClick={startStop}>
+                                    {context.isRuning ? 'Reanudar' : 'Detener' }
                                 </button>
                                 }
                                 <div className='items-center'>

@@ -9,7 +9,6 @@ import { HiMiniCog6Tooth } from "react-icons/hi2";
 import { MdNotifications } from "react-icons/md";
 import { MdNotificationsActive } from "react-icons/md";
 import { MyNotification } from '../MyNotification';
-import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const context = useContext(MasivosContext);
@@ -29,27 +28,9 @@ const Navbar = () => {
     };
   }, []);
 
-  const textNotifications = () => {
-    return context.Notificaciones.map((item, index) => (
-      `<div key=${index} class="border rounded-lg p-2 m-2" ><h1 class="font-bold m-2">${item.titulo}</h1><h3>${item.texto}</h3></div>`
-    ));
-  };
-
   const toast = () => {
-    // const ToastSwal = Swal.mixin({
-    //   toast: true,
-    //   position: 'top-end',
-    //   showConfirmButton: false,
-    //   showCloseButton: true,
-    // });
-    // ToastSwal.fire({
-    //   icon: '',
-    //   title: 'Notificaciones',
-    //   html: textNotifications().join(''),
-    // });
-    // context.setNotificaciones([]);
-    // console.log('hola mundo ' + context.detailsExcel?.length);
     context.setShowNotification(true);
+    context.setNewNotifications(false);
   }
 
   const restore = () => {

@@ -92,24 +92,35 @@ export const MasivosProvider = ({ children }) => {
 
   const [numberFail, setNumberFail] = useState(false);
 
+  const [isRuning, setIsRuning] = useState(false)
+
+  const [isRefresh, setIsRefresh] = useState(false);
+
   useEffect(() => {
 
-    if(tokenUser){
-    const intervalId = setInterval(() => {
-      handleTokenRefresh(tokenUser).then(result => {
-        if (result) {
-          setTokenUser(result.token);
-        }
-      })
-    }, 0.5 * 60 * 1000); 
+    const refreshToken = () => {
+      setIsRefresh(true);
+      setTimeout(() => {
+        handleTokenRefresh(tokenUser).then(result => {
+          if (result && result.token) {
+            setTokenUser(result.token);
+            console.log('Nuevo token:', result.token);
+          }
+        }).catch(error => {
+          console.error('Error al actualizar el token:', error);
+        }).finally(() => {
+          setIsRefresh(false);
+        });
+      }, 500); 
+    };
+
+    const intervalId = setInterval(refreshToken, 20 * 60 * 1000);
 
     return () => clearInterval(intervalId);
-  }
+    
+    }, [tokenUser]);
 
-  }, [tokenUser])
-
-
-
+    const [newNotifications, setNewNotifications] = useState(false);
 
   return (
     <MasivosContext.Provider
@@ -170,7 +181,13 @@ export const MasivosProvider = ({ children }) => {
         showNotification,
         setShowNotification,
         numberFail,
-        setNumberFail
+        setNumberFail,
+        isRuning,
+        setIsRuning,
+        isRefresh,
+        setIsRefresh,
+        newNotifications,
+        setNewNotifications
       }}
     >
       {children}

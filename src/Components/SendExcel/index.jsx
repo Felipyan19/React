@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TbReportSearch } from 'react-icons/tb';
 import { MasivosContext } from '../../Context';
@@ -9,14 +9,42 @@ import Swal from 'sweetalert2';
 
 const SendExcel = () => {
   const context = useContext(MasivosContext);
-  const token = context.tokenUser;
-  const client = context.homeDataClient.attributes.Client
-  const template = context.plantilla
-  const image = context.urlTemplate
-
+  const client = context.homeDataClient.attributes.Client;
+  const template = context.plantilla;
+  const image = context.urlTemplate;
+  const currentTokenUser = useRef(context.tokenUser);
+  const currentIsRuning = useRef(context.isRuning);
+  const currentIsRefresh = useRef(context.isRefresh);
   const [dataExcel, setDataExcel] = useState([]);
+  const iterBucle = useRef(0);
+  const incorrectos = useRef(0);
+  const correctos = useRef(0);
+
+  useEffect(() => {
+
+    currentTokenUser.current = context.tokenUser;
+    
+  }, [context.tokenUser]);
+
+  useEffect(() => {
+    console.log(context.isRefresh);
+    currentIsRefresh.current = context.isRefresh;
+    if (!currentIsRefresh.current && !(context.detailSend.procesado === context.excelLength)) {
+      handleBucleSend();
+    }
+  },[context.isRefresh]);
   
+  useEffect(() => {
+
+    currentIsRuning.current = context.isRuning;
+    console.log(currentIsRuning.current);
   
+    if (!currentIsRuning.current) {
+      handleBucleSend();
+    }
+  
+  }, [context.isRuning]);
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -36,68 +64,74 @@ const SendExcel = () => {
     };
     reader.readAsBinaryString(file);
   };
+  
+  const handeSend = async (item) => {
+    if (context.urlImage) {
+      return await context.handleSendTemplate(currentTokenUser.current, client, item[1], template, image);
+    } else {
+      return await context.handleSendMensaje(currentTokenUser.current, client, item[1], template);
+    }
+  }
+  
+  const handleBucleSend = async () => {
+    for (let i = iterBucle.current; i < dataExcel.length; i++) {
+      
+      console.log(i+1);
+      
+      if (currentIsRuning.current) {
+        iterBucle.current = i;
+        return;
+      }
 
+      if (currentIsRefresh.current) {
+        iterBucle.current = i;
+        return;
+      }
+      
+      let response;
+      try {
+        response = await handeSend(dataExcel[i]);
+
+        if (response.attributes.code_status === 200) {
+          correctos.current++;
+        } else {
+          incorrectos.current++;
+          await context.setDataError(prevData => [...prevData, { id: dataExcel[i][0], number: dataExcel[i][1], status: response }]);
+        }
+      } catch (error) {
+        incorrectos.current++;
+        await context.setDataError(prevData => [...prevData, { id: dataExcel[i][0], number: dataExcel[i][1], status: response }]);
+      }
+
+      await context.setDetailSend({
+        procesado: i+1,
+        correctos: correctos.current,
+        incorrectos: incorrectos.current
+      });
+
+      response.wa_id = dataExcel[i][1];
+      
+      await context.setSendHistory(prevData => [...prevData, response]);
+    }
+  }
+  
   const sendExcelData = async () => {
-    let counter = 0;
-    let incorrectos = 0;
-    let correctos = 0;
+    
     context.setStartSend(true);
     context.setShowToast(true);
     context.setSubmitButtonClicked(false);
 
-  
-    for (const item of dataExcel) {
-      
-       counter++;
-      // if (counter > 10) {
-      //   break;
-      // }
-  
 
-      let response = '';
+    handleBucleSend();
 
-      try {
-        if (context.urlImage) {
-          response = await context.handleSendTemplate(token, client, item[1], template, image);
-        } else {
-          response = await context.handleSendMensaje(token, client, item[1], template);
-        }
-  
-        if (response.attributes.code_status === 200) {
-          correctos++;
-        } else {
-          incorrectos++;
-          await context.setDataError(prevData => [...prevData, { id: item[0], number: item[1], status: response }]);
-        }
-      } catch (error) {
-        incorrectos++;
-        await context.setDataError(prevData => [...prevData, { id: item[0], number: item[1], status: response }]);
-      }
-  
-      await context.setDetailSend({
-        procesado: counter,
-        correctos: correctos,
-        incorrectos: incorrectos
-      });
-
-      response.wa_id = item[1];
-
-      await context.setSendHistory(prevData => [...prevData, response]);
-    }
-  
     console.log(await context.dataError);
-    
   };
-
-  useEffect(() => {
-    console.log('DataError has updated:', context.dataError);
-  }, [context.dataError]);
-
 
   const handleclickSendExcel = () => {
     if (context.excelLength > 0 && context.plantilla) {
       sendExcelData();
     } else {
+      console.log(context.excelLength, context.plantilla);
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -105,7 +139,6 @@ const SendExcel = () => {
       })
     }
   }
-
 
   return (
     <>
