@@ -16,12 +16,11 @@ const useResetPassword = ({paramsJson}) => {
     };
 
     const sendResetPassword = async () => {
-      console.log(email);
         if (email) { 
-          const result = await handleResetPassword(email);
-          console.log(result);
+          Modal('info', 'Validando Datos');
           context.setShowResetPassword(false);
-          Modal('info', 'Correo enviado');
+          const response = await handleResetPassword(email);
+          response.status ? Modal('success', 'Correo enviado') : Modal('error', 'Error en la solicitud');
         }
     }
 

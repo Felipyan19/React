@@ -1,45 +1,27 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { MasivosContext } from '../../Context';
+import { useSignIn } from './useSignIn';
+import { MyResetPassword } from '../../Components/MyResetPassword';
 import Logo from '../../Assets/logo.png';
 import Login from '../../Assets/login.jpg';
-import { MyResetPassword } from '../../Components/MyResetPassword';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function SignIn() {
+
   const context = useContext(MasivosContext);
-  const [showPassword, setShowPassword] = useState(false);
-  const [paramsJson, setParamsJson] = useState({});
+
+  const { 
+    handleEmailChange, 
+    handlePasswordChange, 
+    handleSubmit, 
+    showPassword, 
+    toggleShowPassword, 
+    handleResetPassword, 
+    paramsJson 
+  } = useSignIn();
+
   
-  const handleEmailChange = (e) => {
-    context.setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    context.setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    context.setSubmitButtonClicked(true);
-  };
-
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search) || {};
-    
-    queryParams.forEach((value, key) => {
-      paramsJson[key] = value;
-      setParamsJson(paramsJson);
-    });
-
-    if (queryParams.toString()) {
-      context.setShowResetPassword(true);
-    }
-  }, []);
 
   return (
     <div className="h-screen w-full flex md:justify-end" style={{ backgroundImage: `url(${Login})` }}>
@@ -87,7 +69,7 @@ function SignIn() {
            <span className="text-[#212529] font-bold mt-4 text-xs">
              ¿Olvido su contraseña?  
             <a className="text-[#0096C8] ml-2 cursor-pointer"
-              onClick={() => context.setShowResetPassword(true)}
+              onClick={handleResetPassword}
               > 
               Click
               </a>

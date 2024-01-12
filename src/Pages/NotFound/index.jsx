@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoError from '../../Assets/dd.png';
+import LogoError from '../../Assets/404-min.webp';
 import logoCCG from '../../Assets/logo.png';
 const NotFound = () => {
     return (
