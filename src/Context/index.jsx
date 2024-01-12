@@ -9,8 +9,11 @@ import {
   handleSendTemplate, 
   refreshTemplates,
   handleSendMensaje,
-  handleTokenRefresh
+  handleTokenRefresh,
+  handleSendEmail
 } from '../Api';
+import { newTokenClients } from '../Api/newTokenClients'
+import { updClientsUser } from '../Api/updClientsUser'
 import { Modal } from '../Utils/Modal';
 
 export const MasivosContext = createContext();
@@ -69,8 +72,11 @@ export const MasivosProvider = ({ children }) => {
       'Campañas': {
         'Crear': { fields: ['name', 'token_meta', 'phone_id', 'waba_id', 'users', 'image'], api: handleClient },
       },
-      'Usuarios por campañas': {
-        'Crear': { fields: ['name', 'token_meta', 'phone_id', 'waba_id', 'users', 'image'], api: handleClient },
+      'Cambiar token': {
+        'Crear': { fields:['Campaña', 'nuevo token'], api: newTokenClients }
+      },
+      'Usuario por Campaña': {
+        'Crear': { fields:['Campaña', 'users'], api: updClientsUser }
       }
     });
 
@@ -121,6 +127,16 @@ export const MasivosProvider = ({ children }) => {
     }, [tokenUser]);
 
     const [newNotifications, setNewNotifications] = useState(false);
+
+    const [showResetPassword, setShowResetPassword] = useState(false);
+
+    const [idPlantilla, setIdPlantilla] = useState('');
+
+    const [variables, setVariable] = useState(0);
+
+    const [variablesInputs, setVariablesInputs] = useState({1:'hola',2:'mundo'});
+
+    const [getDataUsers,setGetDataUsers] = useState([]);
 
   return (
     <MasivosContext.Provider
@@ -187,7 +203,18 @@ export const MasivosProvider = ({ children }) => {
         isRefresh,
         setIsRefresh,
         newNotifications,
-        setNewNotifications
+        setNewNotifications,
+        handleSendEmail,
+        showResetPassword,
+        setShowResetPassword,
+        idPlantilla,
+        setIdPlantilla,
+        variables,
+        setVariable,
+        variablesInputs,
+        setVariablesInputs,
+        getDataUsers,
+        setGetDataUsers
       }}
     >
       {children}

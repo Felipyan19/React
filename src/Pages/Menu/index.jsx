@@ -17,19 +17,23 @@ const Menu = () => {
     }, []);
 
     const renderView = () => {
+
         const filteredData = context.getDataClients.filter(item =>
             item.attributes.users.includes(context.userLogin.attributes.name));
 
         if (context.getDataClients && filteredData?.length > 0) {
             return (
-                <div className="flex flex-wrap">
-                    {filteredData.map((item, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                    {filteredData.map((item) => (
                         <div className="mb-4 mx-5" 
                            key={item.id} 
                            >
                             <Card data={item} />
                         </div>
-                    ))}
+                    ))
+                    }
+                    
                 </div>
             );
         } else {
@@ -58,7 +62,7 @@ const Menu = () => {
     const renderSkeleton = () => {
         return (
             <div className="mx-auto">
-                <div className='flex flex-wrap mx-auto'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                     <MyLoader />
                     <MyLoader />
                     <MyLoader />

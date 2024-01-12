@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { MasivosContext } from '../../Context';
+import { VariableTemplate } from '../variableTemplate';
 import cel from '../../Assets/cel.svg';
 
 const ImgTemplate = ({configStyle}) => {
@@ -46,9 +47,22 @@ const ImgTemplate = ({configStyle}) => {
                 />
               </div>
             ) : null}
+            
+            {(context.variables>0)?(
+
+            <VariableTemplate 
+            configStyle={true}
+            body={context.getTemplates.find(({ name }) => name === context.plantilla)?.body}
+            variables={context.variablesInputs}
+            />
+
+            ):(
+
             <div className={`${configStyle ? 'max-h-36' : 'max-h-48'} overflow-y-auto mt-1 scrollbar-hide mx-auto`}>
               <p>{context.getTemplates.find(({ name }) => name === context.plantilla)?.body}</p>
             </div>
+
+          )}
           </li>
         </ul>
       </div>

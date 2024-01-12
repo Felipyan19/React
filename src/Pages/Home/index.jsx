@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Layout } from '../../Components/Layout';
 import { MasivosContext } from '../../Context';
 import { SendExcel } from '../../Components/SendExcel';

@@ -20,6 +20,7 @@ const AppRoutes = () => {
     { path: '/Reportes', element: <ProtectedRoute canActivate={context.login}><Reportes /></ProtectedRoute> },
     { path: '/Config', element: <ProtectedRoute canActivate={context.login}><Config /></ProtectedRoute> },
     { path: '/', element: <SignIn /> },
+    { path: '/cambiar-contrasena', element: <SignIn /> },
     { path: '/*', element: <NotFound /> },
   ]);
   return routes

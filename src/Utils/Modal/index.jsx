@@ -19,4 +19,15 @@ const Modal = (mode , mensaje) => {
       });
 }
 
-export { Modal }
+const Toast = (mode, mensaje) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    showConfirmButton: false,
+  });
+  Toast.fire({
+  text: mensaje,
+  icon: mode,
+  });
+}
+
+export { Modal, Toast }

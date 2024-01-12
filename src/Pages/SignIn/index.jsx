@@ -1,13 +1,15 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { MasivosContext } from '../../Context';
 import Logo from '../../Assets/logo.png';
 import Login from '../../Assets/login.jpg';
+import { MyResetPassword } from '../../Components/MyResetPassword';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function SignIn() {
   const context = useContext(MasivosContext);
   const [showPassword, setShowPassword] = useState(false);
+  const [paramsJson, setParamsJson] = useState({});
   
   const handleEmailChange = (e) => {
     context.setEmail(e.target.value);
@@ -26,6 +28,19 @@ function SignIn() {
     setShowPassword(!showPassword);
   };
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search) || {};
+    
+    queryParams.forEach((value, key) => {
+      paramsJson[key] = value;
+      setParamsJson(paramsJson);
+    });
+
+    if (queryParams.toString()) {
+      context.setShowResetPassword(true);
+    }
+  }, []);
+
   return (
     <div className="h-screen w-full flex md:justify-end" style={{ backgroundImage: `url(${Login})` }}>
       <div className="h-screen bg-white w-full md:w-2/5 flex justify-center items-center"
@@ -36,14 +51,15 @@ function SignIn() {
           <h1 className='text-[#0096C8] text-4xl font-bold'>Masivos Whastapp</h1>
           <h2 className='text-[#212529] font-bold mt-4'>Iniciar sesión</h2>
 
-          <form onSubmit={handleSubmit} className="w-full max-w-sm items-center justify-center flex flex-col mt-2">
+          <form onSubmit={handleSubmit} 
+           className="w-full max-w-sm items-center justify-center flex flex-col mt-2">
             <input
               type="email"
               name="email"
               id="email"
               value={context.email}
               onChange={handleEmailChange}
-              className="h-10 w-full border-b-2 border-[#0096C8] mt-4"
+              className="h-10 w-full border-b-2 border-[#0096C8] mt-4 px-2"
               placeholder="Email"
               required />
 
@@ -52,14 +68,14 @@ function SignIn() {
                 type={showPassword ? "text" : "password"} name="password"
                 value={context.password}
                 onChange={handlePasswordChange}
-                className="h-10 w-full border-b-2 border-[#0096C8] mt-5"
+                className="h-10 w-full border-b-2 border-[#0096C8] mt-5 px-2"
                 placeholder="Contraseña"
                 required />
               <button
                 type="button"
                 onClick={toggleShowPassword}
                 className="absolute inset-y-10 right-0 pr-3 flex items-center text-sm leading-5">
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash } />
               </button>
             </div>
             <button
@@ -68,6 +84,15 @@ function SignIn() {
               Ingresar
             </button>
           </form>
+           <span className="text-[#212529] font-bold mt-4 text-xs">
+             ¿Olvido su contraseña?  
+            <a className="text-[#0096C8] ml-2 cursor-pointer"
+              onClick={() => context.setShowResetPassword(true)}
+              > 
+              Click
+              </a>
+           </span>
+           <MyResetPassword paramsJson={paramsJson}/>
         </div>
       </div>
     </div>

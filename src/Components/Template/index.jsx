@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { RiRefreshLine } from "react-icons/ri";
 import { MasivosContext } from '../../Context';
-import Swal from 'sweetalert2';
+import { useTemplate } from './useTemplate';
 import { v4 as uuidv4 } from 'uuid';
 
 
 const Template = () => {
     const context = useContext(MasivosContext);
+    
+    const { plantillaSelect, clickRefreshTemplates, urlImageTemplate } = useTemplate();
 
     return (
         <>
@@ -17,13 +19,7 @@ const Template = () => {
                     id="selectPlantilla"
                     className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:border-2 p-2 my-2"
                     value={context.plantilla}
-                    onChange={(e) => {
-                        const selectedTemplate = context.getTemplates.find(template => template.name === e.target.value);
-                        if (selectedTemplate) {
-                            context.setPlantilla(selectedTemplate.name);
-                            context.setUrlImage(selectedTemplate.url);
-                        }
-                    }}
+                    onChange={plantillaSelect}
                 >
                     <option value={'Plantilla'}> Plantilla </option>
                     {context.getTemplates.map((template) => (
@@ -36,14 +32,7 @@ const Template = () => {
                     ))}
                 </select>
                 <div className='ml-2 flex justify-end text-3xl text-[#0096C8] font-bold'
-                    onClick={() => {
-                        context.refreshTemplates(context.tokenUser, context.homeDataClient?.id)
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Actualizado',
-                        })
-                        context.handleGetTemplate(context.tokenUser, context.homeDataClient?.id)
-                    }}
+                    onClick={clickRefreshTemplates}
                 >
                     <RiRefreshLine />
                 </div>
@@ -58,9 +47,7 @@ const Template = () => {
                         id="MiUrl"
                         type="text"
                         placeholder="URL de la plantilla"
-                        onChange={(e) => {
-                            context.setUrlTemplate(e.target.value);
-                        }}
+                        onChange={urlImageTemplate}
                         className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:border-2 p-2 my-2"
                     />
                 </>
