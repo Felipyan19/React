@@ -5,6 +5,11 @@ import { Layout } from '../../Components/Layout';
 import 'react-loading-skeleton/dist/skeleton.css'
 import MyLoader from '../../Utils/MyLoader/index.jsx';
 
+/**
+ * Renders the Menu component.
+ *
+ * @return {React.Element} The rendered Menu component.
+ */
 const Menu = () => {
     const context = useContext(MasivosContext);
 
@@ -16,6 +21,12 @@ const Menu = () => {
             });
     }, []);
 
+
+    /**
+     * Renders the view based on the filtered data.
+     *
+     * @return {JSX.Element} The rendered view.
+     */
     const renderView = () => {
 
         const filteredData = context.getDataClients.filter(item =>
@@ -59,6 +70,12 @@ const Menu = () => {
         }
     }
 
+    
+    /**
+     * Render a skeleton component.
+     *
+     * @return {JSX.Element} The skeleton component.
+     */
     const renderSkeleton = () => {
         return (
             <div className="mx-auto">

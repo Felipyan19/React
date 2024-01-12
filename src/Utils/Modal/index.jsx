@@ -1,4 +1,11 @@
 import Swal from 'sweetalert2';
+
+/**
+ * Display a modal with a toast notification.
+ *
+ * @param {string} mode - The mode of the toast (e.g., "success", "error", "warning").
+ * @param {string} mensaje - The message to be displayed in the toast.
+ */
 const Modal = (mode , mensaje) => {
     const Toast = Swal.mixin({
         toast: true,
@@ -19,6 +26,12 @@ const Modal = (mode , mensaje) => {
       });
 }
 
+/**
+ * Creates a toast notification with a given mode and message.
+ *
+ * @param {string} mode - The mode of the toast notification (e.g. "success", "error", "warning").
+ * @param {string} mensaje - The message to be displayed in the toast notification.
+ */
 const Toast = (mode, mensaje) => {
   const Toast = Swal.mixin({
     toast: true,

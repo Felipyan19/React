@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { 
   handleCampains, 
   handleLogin, 
@@ -18,10 +17,22 @@ import { newTokenClients } from '../Api/newTokenClients'
 import { updClientsUser } from '../Api/updClientsUser'
 import { Modal } from '../Utils/Modal';
 
+// Create a context for the Masivos application
 export const MasivosContext = createContext();
 
+/**
+ * Export a provider component that wraps the given children
+ * and provides a context for managing state and data related to a Masivos application.
+ *
+ * @param {Object} props - The component props.
+ * @param {ReactNode} props.children - The children components to be wrapped.
+ * @return {ReactElement} The wrapped component.
+ */
 export const MasivosProvider = ({ children }) => {
-
+  // Navigation hook
+  const navigate = useNavigate();
+  
+  // State variables for user authentication
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,37 +46,12 @@ export const MasivosProvider = ({ children }) => {
   const [isImage, setIsImage] = useState(false);
   const [startSend, setStartSend] = useState(false);
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-     
-    if (email !== '' && password !== '' && submitButtonClicked === true) {
-          Modal('question', 'Validando credenciales...');
-      handleLogin(email, password).then(result => {
-        if (result?.data && result.data?.attributes?.name) {
-          const welcome = '¡Bienvenido! ' + result.data.attributes.name;
-          Modal('success', welcome);
-          setTokenUser(result.data.attributes.token);
-          setUserLogin(result.data);
-          setLogin(true);
-         navigate('/Menu');
-        } else {
-          Modal('error', 'Credenciales incorrectas');
-          setSubmitButtonClicked(false);
-        }
-      })
-
-    }
-
-  }, [submitButtonClicked]);
-
+  // State variables for client data
   const [getDataClient, setGetDataClient] = useState(false);
   const [getDataClients, setGetDataClients] = useState([]);
-
-
   const [homeDataClient, setHomeDataClient] = useState({});
   
-
+  // State variables for form configuration
   const [fieldsFormConfig, setFieldsFormConfig] = useState(
     {
       'Usuarios': {
@@ -82,30 +68,48 @@ export const MasivosProvider = ({ children }) => {
       }
     });
 
+  // State variables for Excel details, notifications, and others
   const [detailsExcel, setDetailsExcel] = useState([]);
   const [excelLength, setExcelLength] = useState(0);
-
   const [Notificaciones, setNotificaciones] = useState([]);
-
   const [urlImage, setUrlImage] = useState(false);
   const [showToast, setShowToast] = useState(false);
-
   const [detailSend, setDetailSend] = useState({});
-
   const [dataError, setDataError] = useState([]);
-
   const [sendHistory, setSendHistory] = useState([]);
-
   const [showNotification, setShowNotification] = useState(false);
-
   const [numberFail, setNumberFail] = useState(false);
-
   const [isRuning, setIsRuning] = useState(false)
-
   const [isRefresh, setIsRefresh] = useState(false);
+  const [newNotifications, setNewNotifications] = useState(false);
+  const [showResetPassword, setShowResetPassword] = useState(false);
+  const [idPlantilla, setIdPlantilla] = useState('');
+  const [variables, setVariable] = useState(0);
+  const [variablesInputs, setVariablesInputs] = useState({});
+  const [getDataUsers, setGetDataUsers] = useState([])
 
+  // Effect to handle login when submitButtonClicked changes
   useEffect(() => {
+    if (email !== '' && password !== '' && submitButtonClicked === true) {
+      Modal('question', 'Validando credenciales...');
+      handleLogin(email, password).then(result => {
+        if (result?.data && result.data?.attributes?.name) {
+          const welcome = '¡Bienvenido! ' + result.data.attributes.name;
+          Modal('success', welcome);
+          setTokenUser(result.data.attributes.token);
+          setUserLogin(result.data);
+          setLogin(true);
+          navigate('/Menu');
+        } else {
+          Modal('error', 'Credenciales incorrectas');
+          setSubmitButtonClicked(false);
+        }
+      })
+    }
+  }, [submitButtonClicked]);
 
+  // Effect to handle token refresh
+  useEffect(() => {
     const refreshToken = () => {
       setIsRefresh(true);
       setTimeout(() => {
@@ -123,23 +127,10 @@ export const MasivosProvider = ({ children }) => {
     };
 
     const intervalId = setInterval(refreshToken, 20 * 60 * 1000);
-
     return () => clearInterval(intervalId);
-    
-    }, [tokenUser]);
+  }, [tokenUser]);
 
-    const [newNotifications, setNewNotifications] = useState(false);
-
-    const [showResetPassword, setShowResetPassword] = useState(false);
-
-    const [idPlantilla, setIdPlantilla] = useState('');
-
-    const [variables, setVariable] = useState(0);
-
-    const [variablesInputs, setVariablesInputs] = useState({});
-
-    const [getDataUsers,setGetDataUsers] = useState([]);
-
+  // Return the Masivos context provider with the state values and functions
   return (
     <MasivosContext.Provider
       value={{

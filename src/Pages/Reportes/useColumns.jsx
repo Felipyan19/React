@@ -1,5 +1,10 @@
 import { useMemo } from "react";
 
+/**
+ * Generates the columns for a table.
+ *
+ * @return {Array} The array of columns.
+ */
 export default function useColumns() {
  const columns = useMemo(
    () => [

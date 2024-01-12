@@ -4,6 +4,14 @@ import { variablesTemp } from '../../Api/variablesTemp';
 import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
 
+
+/**
+ * Generates a function comment for the given function body in a markdown code block with the correct language syntax.
+ *
+ * @return {object} An object containing the following functions:
+ *    - handleFileChange: A function that handles the file change event.
+ *    - handleclickSendExcel: A function that handles the click event to send the Excel data.
+ */
 const useSendExcel = () => {
 
   const {
@@ -37,16 +45,27 @@ const useSendExcel = () => {
   const currentTokenUser = useRef(tokenUser);
   const currentIsRuning = useRef(isRuning);
   const currentIsRefresh = useRef(isRefresh);
-
   const [dataExcel, setDataExcel] = useState([]);
   const iterBucle = useRef(0);
   const incorrectos = useRef(0);
   const correctos = useRef(0);
 
+    /**
+   * Tracks the `tokenUser` state and updates `currentTokenUser`.
+   *
+   * @return {void}
+   */
   useEffect(() => {
     currentTokenUser.current = tokenUser;
   }, [tokenUser]);
 
+    /**
+   * Monitors the `isRefresh` state and controls the sending process
+   * based on `isRefresh` and comparison between `procesado` and
+   * `excelLength`.
+   *
+   * @return {void}
+   */
   useEffect(() => {
     currentIsRefresh.current = isRefresh;
     if (!currentIsRefresh.current && !(detailSend.procesado === excelLength)) {
@@ -54,6 +73,12 @@ const useSendExcel = () => {
     }
   }, [isRefresh]);
 
+    /**
+   * Observes the `isRuning` state and triggers `handleBucleSend` when
+   * `isRuning` is false.
+   *
+   * @return {void}
+   */
   useEffect(() => {
     currentIsRuning.current = isRuning;
     if (!currentIsRuning.current) {
@@ -61,6 +86,12 @@ const useSendExcel = () => {
     }
   }, [isRuning]);
 
+  /**
+   * Handles the file change event.
+   *
+   * @param {object} e - The event object.
+   * @return {void} No return value.
+   */
   const handleFileChange = (e) => {
 
     const file = e.target.files[0];
@@ -83,12 +114,25 @@ const useSendExcel = () => {
         setVariablesInputs(obj);
       }
     };
+    
+    /**
+     * Handles the error when the file could not be read.
+     *
+     * @param {Event} event - The event object.
+     * @return {void} No return value.
+     */
     reader.onerror = () => {
       console.error("File could not be read!");
     };
     reader.readAsBinaryString(file);
   };
 
+  /**
+   * Handles sending data based on certain conditions.
+   *
+   * @param {Object} item - the item to be sent
+   * @return {Promise<any>} a promise that resolves with the result of the sending operation
+   */
   const handeSend = async (item) => {
     if (variables > 0) {
       console.log('variables');
@@ -107,8 +151,6 @@ const useSendExcel = () => {
         );
     }
     if (urlImage) {
-      console.log('template');
-      
       return await handleSendTemplate(
         currentTokenUser.current, 
         homeDataClient.attributes.Client, 
@@ -118,8 +160,6 @@ const useSendExcel = () => {
         );
     }
     if(!urlImage){
-      console.log('mensajes');
-
       return await handleSendMensaje(
         currentTokenUser.current, 
         homeDataClient.attributes.Client, 
@@ -130,6 +170,11 @@ const useSendExcel = () => {
     }
   };
 
+  /**
+   * Handles the sending of data in a loop.
+   *
+   * @return {Promise<void>} A promise that resolves when the sending of data is completed.
+   */
   const handleBucleSend = async () => {
 
     for (let i = iterBucle.current; i < dataExcel.length; i++) {
@@ -185,6 +230,11 @@ const useSendExcel = () => {
 
   };
 
+  /**
+   * Sends Excel data.
+   *
+   * @return {Promise<void>} - A promise that resolves when the data has been sent successfully.
+   */
   const sendExcelData = async () => {
 
     setStartSend(true);
@@ -194,6 +244,11 @@ const useSendExcel = () => {
 
   };
 
+  /**
+   * Handles the click event for sending Excel data.
+   *
+   * @return {undefined} - No return value.
+   */
   const handleclickSendExcel = () => {
 
     if (excelLength > 0 && plantilla) {

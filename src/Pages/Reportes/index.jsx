@@ -8,6 +8,13 @@ import useColumns from './useColumns';
 import { IoReturnUpBackOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
 import { FiDownloadCloud } from "react-icons/fi";
+
+
+/**
+ * Renders a component that displays a table of reports.
+ *
+ * @return {JSX.Element} The rendered component.
+ */
 const Reportes = () => {
     const context = useContext(MasivosContext);
     const columns = useColumns();

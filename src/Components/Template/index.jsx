@@ -4,7 +4,11 @@ import { MasivosContext } from '../../Context';
 import { useTemplate } from './useTemplate';
 import { v4 as uuidv4 } from 'uuid';
 
-
+/**
+ * Renders a template component.
+ *
+ * @return {JSX.Element} The rendered template component.
+ */
 const Template = () => {
     const context = useContext(MasivosContext);
     

@@ -1,5 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Toast } from '../../Utils/Modal';
+
+
+/**
+ * Generate the form configuration for the useForm hook.
+ *
+ * @param {Object} options - The options for the form configuration.
+ * @param {string} options.tokenUser - The token of the user.
+ * @param {string} options.title - The title of the form.
+ * @param {Function} options.api - The API function to be called.
+ * @param {Function} options.closeToast - The function to close the toast.
+ * @return {Object} The form configuration object.
+ */
 const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
     
     const [selectedUsers, setSelectedUsers] = useState([]);
@@ -10,6 +22,12 @@ const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
         setSelectedUsers(preSelectedUserIds);
     }, []);
 
+    /**
+     * Handles the user selection event.
+     *
+     * @param {Event} e - The event object representing the user selection.
+     * @return {void} This function does not return anything.
+     */
     const handleUserSelection = (e) => {
         const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
         setSelectedUsers((prevSelectedUsers) => {
@@ -20,10 +38,22 @@ const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
         });
     };
 
+    /**
+     * Handles the selection of a campaign.
+     *
+     * @param {Event} e - The event object representing the selection event.
+     * @return {void} No return value.
+     */
     const handleCampañaSelection = (e) => {
         setSelectedCampaing(e.target.value);
     }
 
+    /**
+     * Handles the form submission.
+     *
+     * @param {Event} e - The event object.
+     * @return {Promise<void>} Returns a promise that resolves to undefined.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new window.FormData(e.target);

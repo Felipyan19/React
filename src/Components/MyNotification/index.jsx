@@ -1,26 +1,17 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { MasivosContext } from '../../Context';
+import { useMyNotification } from './useMyNotification';
 
+/**
+ * Renders a notification component based on the showNotification flag from the MasivosContext.
+ *
+ * @return {ReactNode} The rendered notification component.
+ */
 const MyNotification = () => {
+
     const context = useContext(MasivosContext);
-
-    const closeToast = () => {
-        context.setShowNotification(false);
-    };
-
-    const handleOutsideClick = (event) => {
-        if (event.target.id === "toast-overlay") {
-            closeToast();
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('click', handleOutsideClick);
-        return () => {
-            window.removeEventListener('click', handleOutsideClick);
-        };
-    }, []);
-
+    const {closeToast } = useMyNotification()
+ 
     return (
         <>
             {context.showNotification && (

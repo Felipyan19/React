@@ -7,7 +7,13 @@ import SendExample from '../../Components/SendExample';
 import { ImgTemplate } from '../../Components/ImgTemplate';
 import { MySend } from '../../Components/MySend';
 
+/**
+ * Renders the Home component.
+ *
+ * @return {JSX.Element} The JSX element representing the Home component.
+ */
 function Home() {
+
   const context = useContext(MasivosContext);
 
   useEffect(() => {
@@ -19,6 +25,7 @@ function Home() {
       })
       context.setGetTemplates(templates || [])
     })
+    
   }, [])
 
   return (

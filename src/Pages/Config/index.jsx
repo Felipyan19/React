@@ -1,29 +1,28 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { MasivosContext } from '../../Context/index.jsx';
 import { Layout } from '../../Components/Layout';
 import { IoListCircle } from "react-icons/io5";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 import { FaUsersCog } from "react-icons/fa";
-import { theUsers } from '../../Api/theUsers';
 import { FormConfig } from '../../Components/FormConfig';
-import './styles.css';
+import { useConfig } from './useConfig';
 
+
+/**
+ * Generates a function comment for the given function body.
+ *
+ * @param {object} props - The props object with the following properties:
+ *   @param {string} title - The title of the box.
+ *   @param {string} emoji - The emoji of the box.
+ *
+ * @returns {JSX.Element} - The JSX element representing the box component.
+ */
 const Box = ({ title, emoji }) => {
+
   const context = useContext(MasivosContext);
-  const [showForm, setShowForm] = useState(false);
 
-  const handleCreate = () => {
-    setShowForm(true);
-  };
-
-  const closeToast = () => {
-    setShowForm(false);
-  }
-
-  const nameButton = () => {
-    return title === 'Usuarios' || title === 'Campañas' ? 'Crear' : 'Modificar';
-  };
-
+  const { showForm, handleCreate, closeToast, nameButton } = useConfig({ title });
+  
   return (
     <>
       <div className='mx-5 mb-6 items-center justify-between flex flex-col rounded-lg shadow-xl border bg-white w-72 h-80'>
@@ -51,19 +50,18 @@ const Box = ({ title, emoji }) => {
 };
 
 
+/**
+ * Generates the function comment for the given function body.
+ *
+ * @return {JSX.Element} The JSX element representing the configuration layout.
+ */
 const Config = () => {
-  const context = useContext(MasivosContext);
-useEffect(() => {
-  theUsers(context.tokenUser)
-  .then(result => {
-      context.setGetDataUsers(result.data);
-  });
-}, []);
+
   return (
     <Layout title='Configuracion'>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
-        <Box title='Usuarios' emoji={<IoPeopleCircleSharp />} />
-        <Box title='Campañas' emoji={<IoListCircle />} />
+        <Box title={'Usuarios'} emoji={<IoPeopleCircleSharp />} />
+        <Box title={'Campañas'} emoji={<IoListCircle />} />
         <Box title={'Cambiar token'} emoji={<IoPeopleCircleSharp />} />
         <Box title={'Usuario por Campaña'} emoji={<FaUsersCog />} />
       </div>

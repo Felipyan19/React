@@ -1,3 +1,13 @@
+import React from 'react'
+
+/**
+ * Renders a layout component with a title and children.
+ *
+ * @param {Object} props - The properties object.
+ * @param {ReactNode} props.children - The children components to render.
+ * @param {string} props.title - The title of the layout.
+ * @return {JSX.Element} - The rendered layout component.
+ */
 const Layout = ({ children, title }) => {
  
   return (

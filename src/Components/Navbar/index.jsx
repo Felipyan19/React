@@ -1,46 +1,25 @@
-import React, { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MasivosContext } from '../../Context';
-import { Modal } from '../../Utils/Modal';
-import Logoh from '../../assets/logo-header.png';
 import { FaUserCircle } from 'react-icons/fa';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { HiMiniCog6Tooth } from "react-icons/hi2";
 import { MdNotifications } from "react-icons/md";
 import { MdNotificationsActive } from "react-icons/md";
 import { MyNotification } from '../MyNotification';
+import { useNabvar } from './useNabvar';
+import Logoh from '../../assets/logo-header.png';
 
+/**
+ * Creates a Navbar component.
+ *
+ * @return {JSX.Element} The rendered Navbar component.
+ */
 const Navbar = () => {
+
   const context = useContext(MasivosContext);
-  const name = context.userLogin?.attributes?.name;
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const toast = () => {
-    context.setShowNotification(true);
-    context.setNewNotifications(false);
-  }
-
-  const restore = () => {
-    context.setGetDataClient(false);
-    context.setSubmitButtonClicked(false);
-    context.setGetDataClients([]);
-    context.setLogin(false);
-    Modal('info', 'Sesión cerrada');
-  };
-
+  const { name, isScrolled, toast, restore } = useNabvar();
+  
   return context.login ? (
     <>
     <nav className={`bg-[#0096C8] fixed z-10 top-0 w-full h-28 text-sm font-light ${isScrolled ? 'shadow' : ''}`}>

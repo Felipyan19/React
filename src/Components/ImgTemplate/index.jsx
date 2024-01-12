@@ -3,6 +3,12 @@ import { MasivosContext } from '../../Context';
 import { VariableTemplate } from '../variableTemplate';
 import cel from '../../Assets/cel.svg';
 
+/**
+ * Renders an image template with dynamic styling and content.
+ *
+ * @param {Object} configStyle - The configuration for the styling of the template.
+ * @return {JSX.Element} The rendered image template.
+ */
 const ImgTemplate = ({configStyle}) => {
   const context = useContext(MasivosContext);
 

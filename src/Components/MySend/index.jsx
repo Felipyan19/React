@@ -5,6 +5,12 @@ import { ImgTemplate } from '../../Components/ImgTemplate';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
 
+/**
+ * Render the header section with the given detailSend.
+ *
+ * @param {Object} detailSend - The detailSend object containing the required data.
+ * @return {JSX.Element} The JSX element representing the header section.
+ */
 const HeaderSection = ({ detailSend }) => (
 
   <div className="bg-white rounded-lg shadow-lg p-3 flex justify-between m-1 ">
@@ -25,6 +31,14 @@ const HeaderSection = ({ detailSend }) => (
 );
 
 
+/**
+ * Renders the body section of the component.
+ *
+ * @param {number} numberFail - The number of failures.
+ * @param {function} sendHistory - The function to send history.
+ * @param {Array} dataError - The array of data errors.
+ * @return {JSX.Element} The JSX element representing the body section.
+ */
 const BodySection = ({ numberFail, sendHistory, dataError }) => (
 
   <div className="bg-white rounded-lg shadow-lg p-3 h-80 flex justify-between">
@@ -54,6 +68,14 @@ const BodySection = ({ numberFail, sendHistory, dataError }) => (
 );
 
 
+/**
+ * Renders the FooterSection component.
+ *
+ * @param {Object} detailSend - The detailSend object containing the details.
+ * @param {number} excelLength - The length of the excel file.
+ * @param {boolean} isRuning - A boolean indicating whether the process is running or not.
+ * @return {JSX.Element} The rendered FooterSection component.
+ */
 const FooterSection = ({ detailSend, excelLength, isRuning }) => {
 
   const { startStop, clickNumberFail } = useNotificationDetails();
@@ -87,6 +109,11 @@ const FooterSection = ({ detailSend, excelLength, isRuning }) => {
 };
 
 
+/**
+ * Generates the function comment for the given function body in a markdown code block with the correct language syntax.
+ *
+ * @return {string} The function comment.
+ */
 const MySend = () => {
 
   const { 

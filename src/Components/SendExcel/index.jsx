@@ -7,8 +7,15 @@ import { useSendExcel } from './useSendExcel';
 import Ejemplo from '../../Ejemplo_xlsx/EjemploMasivos.xlsx';
 
 
+/**
+ * This function renders the SendExcel component, which is responsible for handling the sending of Excel files in the Masivos WhatsApp application.
+ *
+ * @return {void} This function does not return anything.
+ */
 const SendExcel = () => {
+
   const { handleFileChange, handleclickSendExcel } = useSendExcel();
+  
   const { excelLength } = useContext(MasivosContext);
 
   return (

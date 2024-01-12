@@ -31,7 +31,7 @@ const handleCampains = async (token) => {
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Authorization", 'Bearer ' + token);
 
-    const response = await fetch(END_POINT + '/clients/', {
+    const response = await fetch(END_POINT + '/clients', {
       method: 'GET',
       headers: myHeaders,
       redirect: 'follow',

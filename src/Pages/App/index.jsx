@@ -12,6 +12,11 @@ import { Reportes } from '../Reportes';
 import { Config } from '../Config';
 import './App.css';
 
+/**
+ * Generates the routes for the App.
+ *
+ * @return {ReactElement} The routes for the App.
+ */
 const AppRoutes = () => {
   const context = useContext(MasivosContext);
   let routes = useRoutes([
@@ -26,6 +31,11 @@ const AppRoutes = () => {
   return routes
 };
 
+/**
+ * Renders the main application component.
+ *
+ * @return {JSX.Element} The rendered application component.
+ */
 const App = () => {
   return (
     <BrowserRouter>

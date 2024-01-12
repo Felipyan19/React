@@ -7,6 +7,11 @@ import Login from '../../Assets/login.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Renders the sign-in form.
+ *
+ * @return {JSX.Element} The sign-in form component.
+ */
 function SignIn() {
 
   const context = useContext(MasivosContext);

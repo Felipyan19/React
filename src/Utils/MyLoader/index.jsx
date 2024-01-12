@@ -1,6 +1,12 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
+/**
+ * Generate a function comment for the given function body
+ *
+ * @param {Object} props - the props passed to the MyLoader component
+ * @return {ReactElement} - the rendered ContentLoader component
+ */
 const MyLoader = (props) => (
   <ContentLoader 
     speed={2}

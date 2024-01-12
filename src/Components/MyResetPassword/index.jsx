@@ -3,6 +3,12 @@ import { MasivosContext } from '../../Context';
 import { useResetPassword } from './useResetPassword';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
+/**
+ * Renders a component for resetting passwords.
+ *
+ * @param {Object} paramsJson - An object containing parameters.
+ * @return {React.Component} The rendered component.
+ */
 const MyResetPassword = ({ paramsJson }) => {
 
     const context = useContext(MasivosContext);

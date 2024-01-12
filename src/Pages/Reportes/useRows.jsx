@@ -1,5 +1,10 @@
 import { useMemo } from "react";
 
+/**
+ * Generates an array of rows using memoization.
+ *
+ * @returns {Array} An array of rows containing information about car models.
+ */
 export default function useRows() {
  const rows = useMemo(
    () => [
