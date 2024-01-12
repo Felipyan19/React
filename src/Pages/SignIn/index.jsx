@@ -48,7 +48,7 @@ function SignIn() {
 
         <div className='items-center flex flex-col'>
           <img src={Logo} alt="Logo" className='w-3/5' />
-          <h1 className='text-[#0096C8] text-4xl font-bold'>Masivos Whastapp</h1>
+          <h1 className='text-[#0096C8] text-4xl font-bold'>Masivos WhatsApp</h1>
           <h2 className='text-[#212529] font-bold mt-4'>Iniciar sesión</h2>
 
           <form onSubmit={handleSubmit} 

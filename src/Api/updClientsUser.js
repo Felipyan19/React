@@ -2,7 +2,6 @@ const END_POINT = 'http://localhost:8000/api';
 const updClientsUser = async (formFields) => {
 
     const { tokenUser:token, Campaña, users } = formFields;
-    console.log(formFields);
   
     try {
       const myHeaders = new Headers();
@@ -10,7 +9,8 @@ const updClientsUser = async (formFields) => {
       myHeaders.append('Authorization', 'Bearer ' + token);
   
       const data = new FormData();
-      data.append("users", users);
+      
+      data.append("users[0]", users[0]);
   
       const response = await fetch(`${END_POINT}/clients/${Campaña}/update-users`, {
         method: 'POST',

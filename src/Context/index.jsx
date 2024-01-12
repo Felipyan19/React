@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { 
   handleCampains, 
   handleLogin, 
@@ -12,6 +13,7 @@ import {
   handleTokenRefresh,
   handleSendEmail
 } from '../Api';
+
 import { newTokenClients } from '../Api/newTokenClients'
 import { updClientsUser } from '../Api/updClientsUser'
 import { Modal } from '../Utils/Modal';
@@ -134,7 +136,7 @@ export const MasivosProvider = ({ children }) => {
 
     const [variables, setVariable] = useState(0);
 
-    const [variablesInputs, setVariablesInputs] = useState({1:'hola',2:'mundo'});
+    const [variablesInputs, setVariablesInputs] = useState({});
 
     const [getDataUsers,setGetDataUsers] = useState([]);
 
