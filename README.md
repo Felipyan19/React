@@ -2,6 +2,54 @@
 
 Welcome to Mass-WhatsApp, a powerful web platform built with Vite and React that empowers you to send messages massively through WhatsApp. This application simplifies the messaging process with meta integrations and provides robust features for managing campaigns, users, and templates.
 
+## Key Features
+
+- **Bulk WhatsApp Messaging**: Efficiently send messages to multiple recipients through WhatsApp.
+
+- **Secure Authentication**: Log in securely and easily with password recovery options to maintain your account's privacy.
+
+- **Campaign Management**: Visualize and manage active campaigns, obtaining detailed information about their status and configuration.
+
+- **Custom Templates**: Utilize meta integrations to access custom templates, simplifying the message creation process.
+
+- **Message History**: Explore a detailed history of sent messages, including information about the corresponding numbers.
+
+- **Flexible Configuration**: Easily adjust and modify campaign and user settings from the configuration page.
+
+## Quick Guide
+
+### Login
+
+1. Access the platform through the login process.
+2. Use password recovery options if needed.
+
+### Dashboard
+
+1. Navigate the menu to access different sections: Campaigns, Messages, Configuration, etc.
+2. View and manage your active campaigns.
+
+### Message Sending
+
+1. Create bulk messages using custom templates.
+2. Track sent messages and associated numbers.
+
+### Configuration
+
+1. Adjust campaign and user settings according to your needs.
+2. Add and modify campaigns to tailor them to your marketing strategy.
+
+Start sending WhatsApp messages massively with Mass-WhatsApp effectively!
+
+## Developer
+
+This application has been developed using Vite and React. You can check the source code and contribute to the development on our GitHub repository.
+
+[GitHub Repository](#link-to-your-github-repo)
+
+---
+
+**Note:** Replace "#link-to-your-github-repo" with the actual link to your GitHub repository.
+
 ### Table of Contents
 
 *   [useFormConfig][1]
@@ -83,53 +131,6 @@ Welcome to Mass-WhatsApp, a powerful web platform built with Vite and React that
 *   [toggleShowPassword][77]
 *   [handleResetPassword][78]
 
-## Key Features
-
-- **Bulk WhatsApp Messaging**: Efficiently send messages to multiple recipients through WhatsApp.
-
-- **Secure Authentication**: Log in securely and easily with password recovery options to maintain your account's privacy.
-
-- **Campaign Management**: Visualize and manage active campaigns, obtaining detailed information about their status and configuration.
-
-- **Custom Templates**: Utilize meta integrations to access custom templates, simplifying the message creation process.
-
-- **Message History**: Explore a detailed history of sent messages, including information about the corresponding numbers.
-
-- **Flexible Configuration**: Easily adjust and modify campaign and user settings from the configuration page.
-
-## Quick Guide
-
-### Login
-
-1. Access the platform through the login process.
-2. Use password recovery options if needed.
-
-### Dashboard
-
-1. Navigate the menu to access different sections: Campaigns, Messages, Configuration, etc.
-2. View and manage your active campaigns.
-
-### Message Sending
-
-1. Create bulk messages using custom templates.
-2. Track sent messages and associated numbers.
-
-### Configuration
-
-1. Adjust campaign and user settings according to your needs.
-2. Add and modify campaigns to tailor them to your marketing strategy.
-
-Start sending WhatsApp messages massively with Mass-WhatsApp effectively!
-
-## Developer
-
-This application has been developed using Vite and React. You can check the source code and contribute to the development on our GitHub repository.
-
-[GitHub Repository](#link-to-your-github-repo)
-
----
-
-**Note:** Replace "#link-to-your-github-repo" with the actual link to your GitHub repository.
 
 ## useFormConfig
 
