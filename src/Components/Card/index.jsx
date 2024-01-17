@@ -3,32 +3,32 @@ import { MasivosContext } from '../../Context'
 import { useNavigate } from 'react-router-dom'
 
 /**
- * Renders a card component with client data.
+ * Renderiza un componente de tarjeta con datos del cliente.
  *
- * @param {Object} data - The data object containing client information.
- * @return {JSX.Element} The rendered card component.
+ * @param {Object} data - El objeto de datos que contiene información del cliente.
+ * @return {JSX.Element} El componente de tarjeta renderizado.
  */
 const Card = ({ data }) => {
   
   const context = useContext(MasivosContext)
   const navigate = useNavigate();
 
-  /**
-   * Shows the given data.
+/**
+   * Muestra los datos proporcionados.
    *
-   * @param {type} data - the data to be shown
-   * @return {type} undefined
+   * @param {Object} data - Los datos que se mostrarán.
+   * @return {void} Esta función no devuelve nada.
    */
   const show = (data) => {
     context.setHomeDataClient(data)
     navigate('/Home');
   }
   
-  /**
-   * Handles the error when loading an image.
+ /**
+   * Maneja el error al cargar una imagen.
    *
-   * @param {Event} e - The event object containing information about the error.
-   * @return {void} This function does not return a value.
+   * @param {Event} e - El objeto de evento que contiene información sobre el error.
+   * @return {void} Esta función no devuelve nada.
    */
   const handleImageError = (e) => {
     e.target.src = 'path/to/default/image.jpg'; // replace with your default image path

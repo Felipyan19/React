@@ -13,9 +13,9 @@ import { Config } from '../Config';
 import './App.css';
 
 /**
- * Generates the routes for the App.
+ * Genera las rutas para la aplicación.
  *
- * @return {ReactElement} The routes for the App.
+ * @return {ReactElement} Las rutas para la aplicación.
  */
 const AppRoutes = () => {
   const context = useContext(MasivosContext);
@@ -32,9 +32,9 @@ const AppRoutes = () => {
 };
 
 /**
- * Renders the main application component.
+ * Renderiza el componente principal de la aplicación.
  *
- * @return {JSX.Element} The rendered application component.
+ * @return {JSX.Element} El componente de la aplicación renderizado.
  */
 const App = () => {
   return (

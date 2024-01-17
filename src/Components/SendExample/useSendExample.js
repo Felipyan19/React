@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { MasivosContext } from '../../Context';
 
 /**
- * Generates a function comment for the given function body.
+ * Genera un comentario de función para el cuerpo de la función dada.
  *
- * @return {Object} An object containing two functions: `handleNumeroEjemplo` and `handleSendExample`.
+ * @return {Object} Un objeto que contiene dos funciones: `handleNumeroEjemplo` y `handleSendExample`.
  */
 const useSendExample = () => {
 
@@ -20,10 +20,10 @@ const useSendExample = () => {
     let response
   
     /**
-     * Handles the send operation.
+     * Maneja la operación de envío.
      *
-     * @param {string} phone - The phone number to send the message to.
-     * @return {Promise<any>} A promise that resolves to the result of the send operation.
+     * @param {string} phone - El número de teléfono al que se enviará el mensaje.
+     * @return {Promise<any>} Una promesa que se resuelve con el resultado de la operación de envío.
      */
     const handeSend = async (phone) => {
       if (context.urlImage) {
@@ -34,9 +34,9 @@ const useSendExample = () => {
     }
   
     /**
-     * Sends example data asynchronously.
+     * Envía datos de ejemplo de forma asíncrona.
      *
-     * @return {Promise<void>} - A promise that resolves when the data is sent.
+     * @return {Promise<void>} - Una promesa que se resuelve cuando se envían los datos.
      */
     const sendExampleData = async () => {
   
@@ -79,19 +79,19 @@ const useSendExample = () => {
     }
   
     /**
-     * A description of the entire function.
+     * Una descripción de toda la función.
      *
-     * @param {type} e - the event object
-     * @return {type} undefined
+     * @param {type} e - el objeto de evento
+     * @return {type} indefinido
      */
     const handleNumeroEjemplo = (e) => {
       context.setNumeroEjemplo(e.target.value)
     }
   
     /**
-     * Executes the handleSendExample function.
+     * Ejecuta la función handleSendExample.
      *
-     * @return {void} This function does not return a value.
+     * @return {void} Esta función no devuelve un valor.
      */
     const handleSendExample = () => {
       sendExampleData();

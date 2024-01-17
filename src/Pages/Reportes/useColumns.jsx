@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
 /**
- * Generates the columns for a table.
+ * Genera las columnas para una tabla.
  *
- * @return {Array} The array of columns.
+ * @return {Array} El array de columnas.
  */
 export default function useColumns() {
  const columns = useMemo(

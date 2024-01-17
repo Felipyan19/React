@@ -2,9 +2,9 @@ import React from 'react';
 import LogoError from '../../Assets/404-min.webp';
 
 /**
- * Renders a component for when a page is not found.
+ * Renderiza un componente para cuando no se encuentra una página.
  *
- * @return {JSX.Element} A React component representing the "Not Found" page.
+ * @return {JSX.Element} Un componente de React que representa la página de "No encontrada".
  */
 const NotFound = () => {
     return (

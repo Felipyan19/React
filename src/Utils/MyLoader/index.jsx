@@ -2,10 +2,10 @@ import React from "react"
 import ContentLoader from "react-content-loader"
 
 /**
- * Generate a function comment for the given function body
+ * Genera un comentario de función para el cuerpo de la función proporcionada.
  *
- * @param {Object} props - the props passed to the MyLoader component
- * @return {ReactElement} - the rendered ContentLoader component
+ * @param {Object} props - las props pasadas al componente MyLoader.
+ * @return {ReactElement} - el componente ContentLoader renderizado.
  */
 const MyLoader = (props) => (
   <ContentLoader 

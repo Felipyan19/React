@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 /**
- * Renders the sign-in form.
+ * Renderiza el formulario de inicio de sesión.
  *
- * @return {JSX.Element} The sign-in form component.
+ * @return {JSX.Element} El componente del formulario de inicio de sesión.
  */
 function SignIn({ params }) {
 

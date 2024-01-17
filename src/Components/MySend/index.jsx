@@ -6,10 +6,10 @@ import { IoIosCloseCircleOutline } from 'react-icons/io';
 
 
 /**
- * Render the header section with the given detailSend.
+ * Renderiza la sección de encabezado con el detailSend proporcionado.
  *
- * @param {Object} detailSend - The detailSend object containing the required data.
- * @return {JSX.Element} The JSX element representing the header section.
+ * @param {Object} detailSend - El objeto detailSend que contiene los datos necesarios.
+ * @return {JSX.Element} El elemento JSX que representa la sección de encabezado.
  */
 const HeaderSection = ({ detailSend }) => (
 
@@ -32,12 +32,12 @@ const HeaderSection = ({ detailSend }) => (
 
 
 /**
- * Renders the body section of the component.
+ * Renderiza la sección del cuerpo del componente.
  *
- * @param {number} numberFail - The number of failures.
- * @param {function} sendHistory - The function to send history.
- * @param {Array} dataError - The array of data errors.
- * @return {JSX.Element} The JSX element representing the body section.
+ * @param {number} numberFail - El número de fallos.
+ * @param {function} sendHistory - La función para enviar el historial.
+ * @param {Array} dataError - El array de errores de datos.
+ * @return {JSX.Element} El elemento JSX que representa la sección del cuerpo.
  */
 const BodySection = ({ numberFail, sendHistory, dataError }) => (
 
@@ -69,12 +69,12 @@ const BodySection = ({ numberFail, sendHistory, dataError }) => (
 
 
 /**
- * Renders the FooterSection component.
+ * Renderiza el componente FooterSection.
  *
- * @param {Object} detailSend - The detailSend object containing the details.
- * @param {number} excelLength - The length of the excel file.
- * @param {boolean} isRuning - A boolean indicating whether the process is running or not.
- * @return {JSX.Element} The rendered FooterSection component.
+ * @param {Object} detailSend - El objeto detailSend que contiene los detalles.
+ * @param {number} excelLength - La longitud del archivo de Excel.
+ * @param {boolean} isRuning - Un booleano que indica si el proceso está en ejecución o no.
+ * @return {JSX.Element} El componente FooterSection renderizado.
  */
 const FooterSection = ({ detailSend, excelLength, isRuning }) => {
 
@@ -110,9 +110,9 @@ const FooterSection = ({ detailSend, excelLength, isRuning }) => {
 
 
 /**
- * Generates the function comment for the given function body in a markdown code block with the correct language syntax.
+ * Genera el comentario de función para el cuerpo de la función en un bloque de código markdown con la sintaxis de lenguaje correcta.
  *
- * @return {string} The function comment.
+ * @return {string} El comentario de la función.
  */
 const MySend = () => {
 

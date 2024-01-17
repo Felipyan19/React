@@ -2,12 +2,12 @@ import { useContext } from 'react';
 import { MasivosContext } from '../../Context';
 
 /**
- * Generates a custom hook that provides notification details and functionality.
+ * Genera un gancho personalizado que proporciona detalles y funcionalidades de notificación.
  *
- * @return {object} An object containing the following functions:
- *   - closeToast: A function that closes the notification toast and updates related state.
- *   - startStop: A function that toggles the running state of the notifications.
- *   - clickNumberFail: A function that toggles the display of failed notification count.
+ * @return {object} Un objeto que contiene las siguientes funciones:
+ *   - closeToast: Una función que cierra la notificación y realiza acciones adicionales.
+ *   - startStop: Una función que alterna el estado de ejecución de las notificaciones.
+ *   - clickNumberFail: Una función que alterna la visualización del recuento de notificaciones fallidas.
  */
 const useNotificationDetails = () => {
 
@@ -26,9 +26,9 @@ const useNotificationDetails = () => {
     } = useContext(MasivosContext);
   
     /**
-     * Closes the toast and performs additional actions.
+     * Cierra la notificación y realiza acciones adicionales.
      *
-     * @return {undefined} This function does not return a value.
+     * @return {undefined} Esta función no devuelve ningún valor.
      */
     const closeToast = () => {
       
@@ -42,18 +42,18 @@ const useNotificationDetails = () => {
     };
   
     /**
-     * Toggles the value of `isRuning`.
+     * Alterna el valor de `isRuning`.
      *
-     * @return {void} No return value.
+     * @return {void} No hay valor de retorno.
      */
     const startStop = () => {
       setIsRuning(!isRuning);
     };
   
     /**
-     * Toggles the value of `numberFail` and updates the state.
+     * Alterna el valor de `numberFail` y actualiza el estado.
      *
-     * @return {undefined} No return value.
+     * @return {undefined} No hay valor de retorno.
      */
     const clickNumberFail = () => {
       setNumberFail(!numberFail);

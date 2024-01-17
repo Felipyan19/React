@@ -2,9 +2,9 @@ import { useContext, useState } from 'react';
 import { MasivosContext } from '../../Context';
 
 /**
- * Generates a custom hook for handling sign-in functionality.
+ * Genera un hook personalizado para manejar la funcionalidad de inicio de sesión.
  *
- * @return {Object} An object containing various functions and state variables related to sign-in.
+ * @return {Object} Un objeto que contiene varias funciones y variables de estado relacionadas con el inicio de sesión.
  */
 const useSignIn = () => {
 
@@ -12,29 +12,29 @@ const useSignIn = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     /**
-     * Handles the change event for the email input field.
+     * Maneja el evento de cambio para el campo de entrada de correo electrónico.
      *
-     * @param {Event} e - The change event object.
-     * @return {void} This function does not return anything.
+     * @param {Event} e - El objeto de evento de cambio.
+     * @return {void} Esta función no devuelve nada.
      */
     const handleEmailChange = (e) => {
       context.setEmail(e.target.value);
     };
   
-    /**
-     * Handles the change event of the password input.
+     /**
+     * Maneja el evento de cambio para el campo de entrada de contraseña.
      *
-     * @param {Event} e - The change event object.
+     * @param {Event} e - El objeto de evento de cambio.
      */
     const handlePasswordChange = (e) => {
       context.setPassword(e.target.value);
     };
   
-    /**
-     * Submits the form when triggered by an event.
+     /**
+     * Envía el formulario cuando es desencadenado por un evento.
      *
-     * @param {Event} e - The event that triggered the form submission.
-     * @return {void} This function does not return a value.
+     * @param {Event} e - El evento que desencadenó el envío del formulario.
+     * @return {void} Esta función no devuelve ningún valor.
      */
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -42,7 +42,7 @@ const useSignIn = () => {
     };
   
     /**
-     * Toggles the visibility of the password.
+     * Alterna la visibilidad de la contraseña.
      *
      * @return {void} 
      */
@@ -51,11 +51,11 @@ const useSignIn = () => {
     };
   
   
-    /**
-     * Reset the user's password.
+   /**
+     * Restablece la contraseña del usuario.
      *
-     * @param {} - No parameters required.
-     * @return {} - No return value.
+     * @param {} - No se requieren parámetros.
+     * @return {} - Sin valor de retorno.
      */
     const handleResetPassword = () => {
       context.setShowResetPassword(true)

@@ -8,9 +8,9 @@ import Ejemplo from '../../Ejemplo_xlsx/EjemploMasivos.xlsx';
 
 
 /**
- * This function renders the SendExcel component, which is responsible for handling the sending of Excel files in the Masivos WhatsApp application.
+ * Esta función renderiza el componente SendExcel, que se encarga de manejar el envío de archivos Excel en la aplicación Masivos WhatsApp.
  *
- * @return {void} This function does not return anything.
+ * @return {void} Esta función no devuelve nada.
  */
 const SendExcel = () => {
 

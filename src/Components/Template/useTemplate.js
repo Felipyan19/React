@@ -3,12 +3,12 @@ import { MasivosContext } from '../../Context';
 import Swal from 'sweetalert2';
 
 /**
- * Generates the function comment for the useTemplate function.
+ * Genera el comentario de función para la función useTemplate.
  *
- * @return {object} An object containing the following functions:
- *   - plantillaSelect: A function that handles the selection of a template.
- *   - clickRefreshTemplates: A function that refreshes the templates.
- *   - urlImageTemplate: A function that sets the URL of the template image.
+ * @return {object} Un objeto que contiene las siguientes funciones:
+ *   - plantillaSelect: Una función que maneja la selección de una plantilla.
+ *   - clickRefreshTemplates: Una función que actualiza las plantillas.
+ *   - urlImageTemplate: Una función que establece la URL de la imagen de la plantilla.
  */
 const useTemplate = () => {
     const { 
@@ -26,10 +26,10 @@ const useTemplate = () => {
     } = useContext(MasivosContext);
   
 /**
- * Generate the function comment for the given function body.
+ * Genera el comentario de función para el cuerpo de la función.
  *
- * @param {Event} e - The event object.
- * @return {void} This function does not return anything.
+ * @param {Event} e - El objeto de evento.
+ * @return {void} Esta función no devuelve nada.
  */
     const plantillaSelect = (e) => {
       const selectedTemplate = getTemplates.find(template => template.name === e.target.value);
@@ -43,11 +43,11 @@ const useTemplate = () => {
     }
 
   /**
-   * Generates new templates asynchronously.
+   * Genera nuevas plantillas de forma asíncrona.
    *
-   * @param {type} tokenUser - the user token
-   * @param {type} homeDataClientId - the ID of the home data client
-   * @return {type} none
+   * @param {type} tokenUser - el token de usuario
+   * @param {type} homeDataClientId - el ID del cliente de datos del hogar
+   * @return {type} ninguno
    */
   const newTemplates = async () => {
     handleGetTemplate(tokenUser, homeDataClient?.id)
@@ -60,12 +60,12 @@ const useTemplate = () => {
   }
 
   /**
-   * Clicks the "Refresh Templates" button and performs the following actions:
-   * 1. Calls the "refreshTemplates" function with the "tokenUser" and "homeDataClient?.id" parameters.
-   * 2. Calls the "newTemplates" function.
-   * 3. Displays a success message using Swal.fire.
+   * Hace clic en el botón "Actualizar plantillas" y realiza las siguientes acciones:
+   * 1. Llama a la función "refreshTemplates" con los parámetros "tokenUser" y "homeDataClient?.id".
+   * 2. Llama a la función "newTemplates".
+   * 3. Muestra un mensaje de éxito usando Swal.fire.
    *
-   * @return {Promise<void>} A promise that resolves when all the actions are complete.
+   * @return {Promise<void>} Una promesa que se resuelve cuando se completan todas las acciones.
    */
   const clickRefreshTemplates = async () => {
     await Promise.all([
@@ -80,10 +80,10 @@ const useTemplate = () => {
   };
 
   /**
-   * Sets the url template based on the target value.
+   * Establece la URL de la plantilla según el valor de destino.
    *
-   * @param {Event} e - The event object containing the target value.
-   * @return {void} This function does not return a value.
+   * @param {Event} e - El objeto de evento que contiene el valor de destino.
+   * @return {void} Esta función no devuelve ningún valor.
    */
   const urlImageTemplate = (e) => {
     setUrlTemplate(e.target.value);

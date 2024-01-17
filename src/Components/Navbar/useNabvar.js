@@ -2,14 +2,15 @@ import { useContext, useState, useEffect } from 'react';
 import { MasivosContext } from '../../Context';
 import { Modal } from '../../Utils/Modal';
 
+
 /**
- * Returns an object containing the user's name, whether the page is scrolled, and two functions for displaying a toast notification and restoring session data.
+ * Devuelve un objeto que contiene el nombre del usuario, si la página está desplazada y dos funciones para mostrar una notificación toast y restaurar los datos de la sesión.
  *
- * @return {object} An object with the following properties:
- *                  - name: The user's name.
- *                  - isScrolled: A boolean indicating whether the page is scrolled.
- *                  - toast: A function for displaying a toast notification.
- *                  - restore: A function for restoring session data.
+ * @return {object} Un objeto con las siguientes propiedades:
+ *                  - name: El nombre del usuario.
+ *                  - isScrolled: Un booleano que indica si la página está desplazada.
+ *                  - toast: Una función para mostrar una notificación toast.
+ *                  - restore: Una función para restaurar los datos de la sesión.
  */
 const useNabvar = () => {
 
@@ -21,10 +22,9 @@ const useNabvar = () => {
     useEffect(() => {
 
       /**
-       * Handles the scroll event.
+       * Maneja el evento de desplazamiento.
        *
-       * @param {type} paramName - description of parameter
-       * @return {type} description of return value
+       * @return {void} Esta función no devuelve un valor.
        */
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
@@ -37,9 +37,9 @@ const useNabvar = () => {
     }, []);
   
     /**
-     * A function to display a toast notification.
+     * Una función para mostrar una notificación toast.
      *
-     * @return {void} This function does not return a value.
+     * @return {void} Esta función no devuelve un valor.
      */
     const toast = () => {
       context.setShowNotification(true);
@@ -47,10 +47,9 @@ const useNabvar = () => {
     }
   
     /**
-     * Restores the state of the context and displays an info modal for a closed session.
+     * Restaura el estado del contexto y muestra un modal de información para una sesión cerrada.
      *
-     * @param {type} paramName - description of parameter
-     * @return {type} description of return value
+     * @return {void} Esta función no devuelve un valor.
      */
     const restore = () => {
       context.setGetDataClient(false);

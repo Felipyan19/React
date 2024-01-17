@@ -6,9 +6,9 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import MyLoader from '../../Utils/MyLoader/index.jsx';
 
 /**
- * Renders the Menu component.
+ * Renderiza el componente Menu.
  *
- * @return {React.Element} The rendered Menu component.
+ * @return {React.Element} El componente Menu renderizado.
  */
 const Menu = () => {
     const context = useContext(MasivosContext);
@@ -22,11 +22,12 @@ const Menu = () => {
     }, []);
 
 
-    /**
-     * Renders the view based on the filtered data.
-     *
-     * @return {JSX.Element} The rendered view.
-     */
+/**
+ * Renderiza la vista basada en los datos filtrados.
+ *
+ * @return {JSX.Element} La vista renderizada.
+ */
+
     const renderView = () => {
 
         const filteredData = context.getDataClients.filter(item =>
@@ -78,7 +79,7 @@ const Menu = () => {
     }
 
 
-    /**
+      /**
      * Render a skeleton component.
      *
      * @return {JSX.Element} The skeleton component.

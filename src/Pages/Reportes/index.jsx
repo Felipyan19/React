@@ -11,9 +11,9 @@ import { FiDownloadCloud } from "react-icons/fi";
 
 
 /**
- * Renders a component that displays a table of reports.
+ * Renderiza un componente que muestra una tabla de informes.
  *
- * @return {JSX.Element} The rendered component.
+ * @return {JSX.Element} El componente renderizado.
  */
 const Reportes = () => {
     const context = useContext(MasivosContext);

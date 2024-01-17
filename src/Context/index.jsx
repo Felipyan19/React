@@ -17,22 +17,22 @@ import { newTokenClients } from '../Api/newTokenClients'
 import { updClientsUser } from '../Api/updClientsUser'
 import { Modal } from '../Utils/Modal';
 
-// Create a context for the Masivos application
+// Crea un contexto para la aplicación Masivos
 export const MasivosContext = createContext();
 
 /**
- * Export a provider component that wraps the given children
- * and provides a context for managing state and data related to a Masivos application.
+ * Exporta un componente proveedor que envuelve a los elementos hijos dados
+ * y proporciona un contexto para gestionar el estado y los datos relacionados con la aplicación Masivos.
  *
- * @param {Object} props - The component props.
- * @param {ReactNode} props.children - The children components to be wrapped.
- * @return {ReactElement} The wrapped component.
+ * @param {Object} props - Las propiedades del componente.
+ * @param {ReactNode} props.children - Los elementos hijos que se envuelven.
+ * @return {ReactElement} El componente envuelto.
  */
 export const MasivosProvider = ({ children }) => {
-  // Navigation hook
+  // Hook de navegación
   const navigate = useNavigate();
   
-  // State variables for user authentication
+  // Variables de estado para la autenticación del usuario
   const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,12 +46,12 @@ export const MasivosProvider = ({ children }) => {
   const [isImage, setIsImage] = useState(false);
   const [startSend, setStartSend] = useState(false);
 
-  // State variables for client data
+  // Variables de estado para los datos del cliente
   const [getDataClient, setGetDataClient] = useState(false);
   const [getDataClients, setGetDataClients] = useState([]);
   const [homeDataClient, setHomeDataClient] = useState({});
   
-  // State variables for form configuration
+  // Variables de estado para la configuración del formulario
   const [fieldsFormConfig, setFieldsFormConfig] = useState(
     {
       'Usuarios': {
@@ -68,7 +68,7 @@ export const MasivosProvider = ({ children }) => {
       }
     });
 
-  // State variables for Excel details, notifications, and others
+  // Variables de estado para detalles de Excel, notificaciones y otros
   const [detailsExcel, setDetailsExcel] = useState([]);
   const [excelLength, setExcelLength] = useState(0);
   const [Notificaciones, setNotificaciones] = useState([]);
@@ -88,7 +88,7 @@ export const MasivosProvider = ({ children }) => {
   const [variablesInputs, setVariablesInputs] = useState({});
   const [getDataUsers, setGetDataUsers] = useState([])
 
-  // Effect to handle login when submitButtonClicked changes
+  // Efecto para manejar el inicio de sesión cuando submitButtonClicked cambia
   useEffect(() => {
     if (email !== '' && password !== '' && submitButtonClicked === true) {
       Modal('question', 'Validando credenciales...');
@@ -108,7 +108,7 @@ export const MasivosProvider = ({ children }) => {
     }
   }, [submitButtonClicked]);
 
-  // Effect to handle token refresh
+  // Efecto para manejar la actualización del token
   useEffect(() => {
     const refreshToken = () => {
       setIsRefresh(true);
@@ -130,7 +130,7 @@ export const MasivosProvider = ({ children }) => {
     return () => clearInterval(intervalId);
   }, [tokenUser]);
 
-  // Return the Masivos context provider with the state values and functions
+  // Devuelve el proveedor de contexto de Masivos con los valores y funciones de estado
   return (
     <MasivosContext.Provider
       value={{

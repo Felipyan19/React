@@ -11,9 +11,9 @@ import { useNabvar } from './useNabvar';
 import Logoh from '../../assets/logo-header.png';
 
 /**
- * Creates a Navbar component.
+ * Crea un componente Navbar.
  *
- * @return {JSX.Element} The rendered Navbar component.
+ * @return {JSX.Element} El componente Navbar renderizado.
  */
 const Navbar = () => {
 

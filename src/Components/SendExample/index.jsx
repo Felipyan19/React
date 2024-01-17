@@ -1,9 +1,9 @@
 import { useSendExample } from './useSendExample';
 
 /**
- * Renders the SendExample component.
+ * Renderiza el componente SendExample.
  *
- * @return {JSX.Element} The SendExample component.
+ * @return {JSX.Element} El componente SendExample.
  */
 const SendExample = () => {
 

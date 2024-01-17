@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
 /**
- * Generates an array of rows using memoization.
+ * Genera un array de filas utilizando la memoización.
  *
- * @returns {Array} An array of rows containing information about car models.
+ * @returns {Array} Un array de filas que contiene información sobre modelos de automóviles.
  */
 export default function useRows() {
  const rows = useMemo(

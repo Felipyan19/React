@@ -3,9 +3,9 @@ import { MasivosContext } from '../../Context';
 import { useMyNotification } from './useMyNotification';
 
 /**
- * Renders a notification component based on the showNotification flag from the MasivosContext.
+ * Renderiza un componente de notificación basado en la bandera showNotification del MasivosContext.
  *
- * @return {ReactNode} The rendered notification component.
+ * @return {ReactNode} El componente de notificación renderizado.
  */
 const MyNotification = () => {
 

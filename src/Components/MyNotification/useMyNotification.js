@@ -2,28 +2,28 @@ import { useContext, useEffect } from 'react';
 import { MasivosContext } from '../../Context';
 
 /**
- * Function to use the notification.
+ * Función para usar la notificación.
  *
- * @return {object} An object with the closeToast function
+ * @return {object} Un objeto con la función closeToast.
  */
 const useMyNotification = () => {
 
     const context = useContext(MasivosContext);
 
     /**
-     * Closes the toast notification.
+     * Cierra la notificación de toast.
      *
-     * @param {none} - This function does not take any parameters.
-     * @return {none} - This function does not return any value.
+     * @param {ninguno} - Esta función no toma ningún parámetro.
+     * @return {ninguno} - Esta función no devuelve ningún valor.
      */
     const closeToast = () => {
         context.setShowNotification(false);
     };
 
     /**
-     * Handles click events that occur outside of the toast element.
+     * Maneja eventos de clic que ocurren fuera del elemento de toast.
      *
-     * @param {Event} e - The click event object.
+     * @param {Event} e - El objeto de evento de clic.
      */
     const handleOutsideClick = (e) => {
         if (e.target.id === "toast-overlay") {

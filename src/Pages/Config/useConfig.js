@@ -3,28 +3,28 @@ import { MasivosContext } from '../../Context/index.jsx';
 import { theUsers } from '../../Api/theUsers';
 
 /**
- * Generates a custom hook that manages the configuration state for a specific title.
+ * Genera un hook personalizado que gestiona el estado de configuración para un título específico.
  *
- * @param {Object} config - The configuration object.
- * @param {string} config.title - The title of the configuration.
- * @return {Object} - An object containing the state and functions for managing the configuration.
+ * @param {Object} config - El objeto de configuración.
+ * @param {string} config.title - El título de la configuración.
+ * @return {Object} - Un objeto que contiene el estado y funciones para gestionar la configuración.
  */
 const useConfig = ({ title }) => {
 
     const context = useContext(MasivosContext);
     const [showForm, setShowForm] = useState(false);
   
-    /**
-     * Handle the create operation.
+     /**
+     * Maneja la operación de creación.
      *
-     * @return {void} There is no return value.
+     * @return {void} No hay valor de retorno.
      */
     const handleCreate = () => {
       setShowForm(true);
     };
   
-    /**
-     * Closes the toast.
+     /**
+     * Cierra el aviso.
      *
      * @return {void} 
      */
@@ -33,9 +33,9 @@ const useConfig = ({ title }) => {
     }
   
     /**
-     * Returns the label for the button based on the value of the 'title' variable.
+     * Devuelve la etiqueta para el botón según el valor de la variable 'title'.
      *
-     * @return {string} The label for the button.
+     * @return {string} La etiqueta para el botón.
      */
     const nameButton = () => {
       return title === 'Usuarios' || title === 'Campañas' ? 'Crear' : 'Modificar';

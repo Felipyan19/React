@@ -4,15 +4,15 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useFormConfig } from './useFormConfig';
 
 /**
- * Render a form configuration component.
+ * Renderiza un componente de configuración de formulario.
  *
- * @param {Object} tokenUser - the user token
- * @param {string} title - the title of the form
- * @param {string} mode - the mode of the form
- * @param {Array} fields - an array of form fields
- * @param {Object} api - the API object
- * @param {Function} closeToast - a function to close the toast
- * @return {JSX.Element} the rendered form configuration component
+ * @param {Object} tokenUser - El token de usuario.
+ * @param {string} title - El título del formulario.
+ * @param {string} mode - El modo del formulario.
+ * @param {Array} fields - Un array de campos de formulario.
+ * @param {Object} api - El objeto de la API.
+ * @param {Function} closeToast - Una función para cerrar el mensaje.
+ * @return {JSX.Element} El componente de configuración de formulario renderizado.
  */
 const FormConfig = ({ tokenUser, title, mode, fields, api, closeToast }) => {
     const context = useContext(MasivosContext);

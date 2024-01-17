@@ -5,12 +5,12 @@ import { handleResetPassword } from '../../Api/resetPassword';
 import { handleNewPassword } from '../../Api/newPassword';
 
 /**
- * Generates the function comment for the given function body in a markdown code block
- * with the correct language syntax.
+ * Genera el comentario de función para el cuerpo de la función dada en un bloque de código markdown
+ * con la sintaxis de lenguaje correcta.
  *
- * @param {Object} params - an boolean value indicating whether to show the password field
- * @return {Object} an object containing the email, closeToast, sendResetPassword,
- * handleEmailChange, showPasword, and handleSubmit functions
+ * @param {Object} params - un valor booleano que indica si mostrar el campo de contraseña
+ * @return {Object} un objeto que contiene el email, closeToast, sendResetPassword,
+ * handleEmailChange, showPasword y funciones handleSubmit
  */
 const useResetPassword = ({params}) => {
 
@@ -37,9 +37,9 @@ const useResetPassword = ({params}) => {
     }, []);
 
     /**
-     * Sends a reset password email.
+     * Envía un correo electrónico para restablecer la contraseña.
      *
-     * @return {Promise} A promise that resolves when the email is sent.
+     * @return {Promise} Una promesa que se resuelve cuando se envía el correo electrónico.
      */
     const sendResetPassword = async () => {
 
@@ -53,10 +53,10 @@ const useResetPassword = ({params}) => {
     }
 
     /**
-     * Handles the change event of the email input field.
+     * Maneja el evento de cambio del campo de entrada de correo electrónico.
      *
-     * @param {Event} event - The event object representing the change event.
-     * @return {void} This function does not return anything.
+     * @param {Event} event - El objeto de evento que representa el evento de cambio.
+     * @return {void} Esta función no devuelve nada.
      */
     const handleEmailChange = (event) => {
 
@@ -64,11 +64,11 @@ const useResetPassword = ({params}) => {
 
     }
 
-      /**
-       * Handles the form submission asynchronously.
-       *
-       * @param {Event} e - The form submission event.
-       */
+    /**
+     * Maneja la presentación del formulario de manera asíncrona.
+     *
+     * @param {Event} e - El evento de presentación del formulario.
+     */
       const handleSubmit = async (e) => {
 
         e.preventDefault();

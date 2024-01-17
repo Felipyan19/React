@@ -4,10 +4,10 @@ import { VariableTemplate } from '../variableTemplate';
 import cel from '../../Assets/cel.svg';
 
 /**
- * Renders an image template with dynamic styling and content.
+ * Renderiza una plantilla de imagen con estilo y contenido dinámicos.
  *
- * @param {Object} configStyle - The configuration for the styling of the template.
- * @return {JSX.Element} The rendered image template.
+ * @param {Object} configStyle - La configuración para el estilo de la plantilla.
+ * @return {JSX.Element} La plantilla de imagen renderizada.
  */
 const ImgTemplate = ({configStyle}) => {
   const context = useContext(MasivosContext);

@@ -9,13 +9,13 @@ import { useConfig } from './useConfig';
 
 
 /**
- * Generates a function comment for the given function body.
+ * Genera un comentario de función para el cuerpo de la función dada.
  *
- * @param {object} props - The props object with the following properties:
- *   @param {string} title - The title of the box.
- *   @param {string} emoji - The emoji of the box.
+ * @param {object} props - El objeto de props con las siguientes propiedades:
+ *   @param {string} title - El título del cuadro.
+ *   @param {string} emoji - El emoji del cuadro.
  *
- * @returns {JSX.Element} - The JSX element representing the box component.
+ * @returns {JSX.Element} - El elemento JSX que representa el componente de la caja.
  */
 const Box = ({ title, emoji }) => {
 
@@ -51,9 +51,9 @@ const Box = ({ title, emoji }) => {
 
 
 /**
- * Generates the function comment for the given function body.
+ * Genera el comentario de función para el cuerpo de la función dada.
  *
- * @return {JSX.Element} The JSX element representing the configuration layout.
+ * @return {JSX.Element} El elemento JSX que representa el diseño de configuración.
  */
 const Config = () => {
 

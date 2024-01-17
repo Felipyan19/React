@@ -8,9 +8,9 @@ import { ImgTemplate } from '../../Components/ImgTemplate';
 import { MySend } from '../../Components/MySend';
 
 /**
- * Renders the Home component.
+ * Renderiza el componente Home.
  *
- * @return {JSX.Element} The JSX element representing the Home component.
+ * @return {JSX.Element} El elemento JSX que representa el componente Home.
  */
 function Home() {
 

@@ -5,9 +5,9 @@ import { useTemplate } from './useTemplate';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
- * Renders a template component.
+ * Renderiza un componente de plantilla.
  *
- * @return {JSX.Element} The rendered template component.
+ * @return {JSX.Element} El componente de plantilla renderizado.
  */
 const Template = () => {
     const context = useContext(MasivosContext);

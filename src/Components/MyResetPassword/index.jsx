@@ -4,10 +4,10 @@ import { useResetPassword } from './useResetPassword';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 /**
- * Renders a component for resetting passwords.
+ * Renderiza un componente para restablecer contraseñas.
  *
- * @param {Object} params - An boolean value.
- * @return {React.Component} The rendered component.
+ * @param {Object} params - Un valor booleano.
+ * @return {React.Component} El componente renderizado.
  */
 const MyResetPassword = ({ params }) => {
 

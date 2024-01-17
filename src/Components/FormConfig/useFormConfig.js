@@ -3,14 +3,14 @@ import { Toast } from '../../Utils/Modal';
 
 
 /**
- * Generate the form configuration for the useForm hook.
+ * Genera la configuración del formulario para el hook useForm.
  *
- * @param {Object} options - The options for the form configuration.
- * @param {string} options.tokenUser - The token of the user.
- * @param {string} options.title - The title of the form.
- * @param {Function} options.api - The API function to be called.
- * @param {Function} options.closeToast - The function to close the toast.
- * @return {Object} The form configuration object.
+ * @param {Object} options - Las opciones para la configuración del formulario.
+ * @param {string} options.tokenUser - El token del usuario.
+ * @param {string} options.title - El título del formulario.
+ * @param {Function} options.api - La función de la API a ser llamada.
+ * @param {Function} options.closeToast - La función para cerrar el mensaje.
+ * @return {Object} El objeto de configuración del formulario.
  */
 const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
     
@@ -23,10 +23,10 @@ const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
     }, []);
 
     /**
-     * Handles the user selection event.
+     * Maneja el evento de selección de usuario.
      *
-     * @param {Event} e - The event object representing the user selection.
-     * @return {void} This function does not return anything.
+     * @param {Event} e - El objeto de evento que representa la selección de usuario.
+     * @return {void} Esta función no devuelve nada.
      */
     const handleUserSelection = (e) => {
         const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
@@ -39,20 +39,20 @@ const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
     };
 
     /**
-     * Handles the selection of a campaign.
+     * Maneja la selección de una campaña.
      *
-     * @param {Event} e - The event object representing the selection event.
-     * @return {void} No return value.
+     * @param {Event} e - El objeto de evento que representa el evento de selección.
+     * @return {void} No hay valor de retorno.
      */
     const handleCampañaSelection = (e) => {
         setSelectedCampaing(e.target.value);
     }
 
     /**
-     * Handles the form submission.
+     * Maneja la presentación del formulario.
      *
-     * @param {Event} e - The event object.
-     * @return {Promise<void>} Returns a promise that resolves to undefined.
+     * @param {Event} e - El objeto de evento.
+     * @return {Promise<void>} Devuelve una promesa que se resuelve a indefinido.
      */
     const handleSubmit = async (e) => {
         e.preventDefault();

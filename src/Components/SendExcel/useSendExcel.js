@@ -4,13 +4,12 @@ import { variablesTemp } from '../../Api/variablesTemp';
 import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
 
-
 /**
- * Generates a function comment for the given function body in a markdown code block with the correct language syntax.
+ * Genera comentarios de funciones para el cuerpo de la función dada en un bloque de código de markdown con la sintaxis del lenguaje correcto.
  *
- * @return {object} An object containing the following functions:
- *    - handleFileChange: A function that handles the file change event.
- *    - handleclickSendExcel: A function that handles the click event to send the Excel data.
+ * @return {object} Un objeto que contiene las siguientes funciones:
+ *    - handleFileChange: Una función que maneja el evento de cambio de archivo.
+ *    - handleclickSendExcel: Una función que maneja el evento de clic para enviar los datos de Excel.
  */
 const useSendExcel = () => {
 
@@ -50,8 +49,8 @@ const useSendExcel = () => {
   const incorrectos = useRef(0);
   const correctos = useRef(0);
 
-    /**
-   * Tracks the `tokenUser` state and updates `currentTokenUser`.
+  /**
+   * Rastrea el estado de `tokenUser` y actualiza `currentTokenUser`.
    *
    * @return {void}
    */
@@ -59,9 +58,9 @@ const useSendExcel = () => {
     currentTokenUser.current = tokenUser;
   }, [tokenUser]);
 
-    /**
-   * Monitors the `isRefresh` state and controls the sending process
-   * based on `isRefresh` and comparison between `procesado` and
+  /**
+   * Monitorea el estado de `isRefresh` y controla el proceso de envío
+   * basado en `isRefresh` y la comparación entre `procesado` y
    * `excelLength`.
    *
    * @return {void}
@@ -73,9 +72,9 @@ const useSendExcel = () => {
     }
   }, [isRefresh]);
 
-    /**
-   * Observes the `isRuning` state and triggers `handleBucleSend` when
-   * `isRuning` is false.
+  /**
+   * Observa el estado de `isRuning` y desencadena `handleBucleSend` cuando
+   * `isRuning` es false.
    *
    * @return {void}
    */
@@ -87,10 +86,10 @@ const useSendExcel = () => {
   }, [isRuning]);
 
   /**
-   * Handles the file change event.
+   * Maneja el evento de cambio de archivo.
    *
-   * @param {object} e - The event object.
-   * @return {void} No return value.
+   * @param {object} e - El objeto de evento.
+   * @return {void} No hay valor de retorno.
    */
   const handleFileChange = (e) => {
 
@@ -116,10 +115,10 @@ const useSendExcel = () => {
     };
     
     /**
-     * Handles the error when the file could not be read.
+     * Maneja el error cuando no se pudo leer el archivo.
      *
-     * @param {Event} event - The event object.
-     * @return {void} No return value.
+     * @param {Event} event - El objeto de evento.
+     * @return {void} No hay valor de retorno.
      */
     reader.onerror = () => {
       console.error("File could not be read!");
@@ -128,10 +127,10 @@ const useSendExcel = () => {
   };
 
   /**
-   * Handles sending data based on certain conditions.
+   * Maneja el envío de datos basado en ciertas condiciones.
    *
-   * @param {Object} item - the item to be sent
-   * @return {Promise<any>} a promise that resolves with the result of the sending operation
+   * @param {Object} item - el elemento a enviar
+   * @return {Promise<any>} una promesa que se resuelve con el resultado de la operación de envío
    */
   const handeSend = async (item) => {
     if (variables > 0) {
@@ -171,9 +170,9 @@ const useSendExcel = () => {
   };
 
   /**
-   * Handles the sending of data in a loop.
+   * Maneja el envío de datos en un bucle.
    *
-   * @return {Promise<void>} A promise that resolves when the sending of data is completed.
+   * @return {Promise<void>} Una promesa que se resuelve cuando se completa el envío de datos.
    */
   const handleBucleSend = async () => {
 
@@ -231,9 +230,9 @@ const useSendExcel = () => {
   };
 
   /**
-   * Sends Excel data.
+   * Envía datos de Excel.
    *
-   * @return {Promise<void>} - A promise that resolves when the data has been sent successfully.
+   * @return {Promise<void>} - Una promesa que se resuelve cuando los datos se han enviado con éxito.
    */
   const sendExcelData = async () => {
 
@@ -245,9 +244,9 @@ const useSendExcel = () => {
   };
 
   /**
-   * Handles the click event for sending Excel data.
+   * Maneja el evento de clic para enviar datos de Excel.
    *
-   * @return {undefined} - No return value.
+   * @return {undefined} - No hay valor de retorno.
    */
   const handleclickSendExcel = () => {
 
