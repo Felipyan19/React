@@ -12,7 +12,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
  *
  * @return {JSX.Element} The sign-in form component.
  */
-function SignIn() {
+function SignIn({ params }) {
 
   const context = useContext(MasivosContext);
 
@@ -23,10 +23,8 @@ function SignIn() {
     showPassword, 
     toggleShowPassword, 
     handleResetPassword, 
-    paramsJson 
   } = useSignIn();
 
-  
 
   return (
     <div className="h-screen w-full flex md:justify-end" style={{ backgroundImage: `url(${Login})` }}>
@@ -79,7 +77,7 @@ function SignIn() {
               Click
               </a>
            </span>
-           <MyResetPassword paramsJson={paramsJson}/>
+           <MyResetPassword params={params} />
         </div>
       </div>
     </div>

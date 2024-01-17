@@ -6,10 +6,10 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 /**
  * Renders a component for resetting passwords.
  *
- * @param {Object} paramsJson - An object containing parameters.
+ * @param {Object} params - An boolean value.
  * @return {React.Component} The rendered component.
  */
-const MyResetPassword = ({ paramsJson }) => {
+const MyResetPassword = ({ params }) => {
 
     const context = useContext(MasivosContext);
 
@@ -20,7 +20,7 @@ const MyResetPassword = ({ paramsJson }) => {
         handleEmailChange,
         showPasword,
         handleSubmit
-    } = useResetPassword({ paramsJson })
+    } = useResetPassword({ params })
 
     return (
         <>

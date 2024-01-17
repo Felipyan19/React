@@ -1,4 +1,4 @@
-const END_POINT = 'http://localhost:8000/api';
+const END_POINT = 'https://pruebas.contactcentergrupo.com/api/public/api';
 const handleNewPassword = async (token, password, password_confirmation, email) => {
   try {
     const myHeaders = new Headers();

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { MasivosContext } from '../../Context';
 
 /**
@@ -9,8 +9,6 @@ import { MasivosContext } from '../../Context';
 const useSignIn = () => {
 
     const context = useContext(MasivosContext);
-    const [showPassword, setShowPassword] = useState(false);
-    const [paramsJson, setParamsJson] = useState({});
 
     /**
      * Handles the change event for the email input field.
@@ -51,18 +49,6 @@ const useSignIn = () => {
       setShowPassword(!showPassword);
     };
   
-    useEffect(() => {
-      const queryParams = new URLSearchParams(window.location.search) || {};
-      
-      queryParams.forEach((value, key) => {
-        paramsJson[key] = value;
-        setParamsJson(paramsJson);
-      });
-  
-      if (queryParams.toString()) {
-        context.setShowResetPassword(true);
-      }
-    }, []);
   
     /**
      * Reset the user's password.
@@ -78,10 +64,8 @@ const useSignIn = () => {
       handleEmailChange, 
       handlePasswordChange, 
       handleSubmit, 
-      showPassword, 
       toggleShowPassword, 
       handleResetPassword, 
-      paramsJson 
     }
   }
 

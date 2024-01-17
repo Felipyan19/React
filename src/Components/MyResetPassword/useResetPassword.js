@@ -8,11 +8,11 @@ import { handleNewPassword } from '../../Api/newPassword';
  * Generates the function comment for the given function body in a markdown code block
  * with the correct language syntax.
  *
- * @param {Object} paramsJson - an object containing the parameters for the function
+ * @param {Object} params - an boolean value indicating whether to show the password field
  * @return {Object} an object containing the email, closeToast, sendResetPassword,
  * handleEmailChange, showPasword, and handleSubmit functions
  */
-const useResetPassword = ({paramsJson}) => {
+const useResetPassword = ({params}) => {
 
     const context = useContext(MasivosContext);
 
@@ -24,6 +24,17 @@ const useResetPassword = ({paramsJson}) => {
         context.setShowResetPassword(false);
 
     };
+
+    useEffect(() => {
+
+        if(params) {
+            setShowPasword(true);
+            context.setShowResetPassword(true);
+        }else {
+            setShowPasword(false);
+        }
+        
+    }, []);
 
     /**
      * Sends a reset password email.
@@ -52,14 +63,6 @@ const useResetPassword = ({paramsJson}) => {
         setEmail(event.target.value); 
 
     }
-
-    useEffect(() => {
-
-        if (Object.keys(paramsJson).length > 0) {
-            setShowPasword(true);
-        }
-
-      }, [paramsJson]);
 
       /**
        * Handles the form submission asynchronously.
