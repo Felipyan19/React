@@ -1,4 +1,4 @@
-const END_POINT = 'https://pruebas.contactcentergrupo.com/api/public/api';
+const END_POINT = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 const variablesTemp = async (token, client, phone, template, parameter, image) => {
   try {
@@ -24,12 +24,14 @@ const variablesTemp = async (token, client, phone, template, parameter, image) =
       redirect: 'follow',
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
     return result;
-
   } catch (error) {
-    console.error('Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.', error);
+    console.error('Hubo un error en la solicitud:', error.message);
     throw error; 
   }
 };

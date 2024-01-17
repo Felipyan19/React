@@ -46,8 +46,8 @@ const BodySection = ({ numberFail, sendHistory, dataError }) => (
       {!numberFail ? (
         [...sendHistory].reverse().map((result, index) => (
           <div key={index} className="p-2 my-1 border-b flex justify-between mx-4">
-            <p className={result.attributes?.code_status === 200 ? 'text-green text-opacity-60 text-sm mr-6' : 'text-red-600 text-opacity-60 text-sm mr-6'}>
-              estado : {result.attributes?.code_status || '400'}
+            <p className={result.attributes?.code_status === 200 ? 'text-green-700 text-opacity-60 text-sm mr-6' : 'text-red-600 text-opacity-60 text-sm mr-6'}>
+              Estado : {result.attributes?.code_status || '400'}
             </p>
             <p className="text-black text-opacity-60 text-sm mr-6">numero : {result.attributes?.wa_id || result?.wa_id}</p>
           </div>
@@ -55,7 +55,7 @@ const BodySection = ({ numberFail, sendHistory, dataError }) => (
       ) : (
         [...dataError].reverse().map((result, index) => (
           <div key={index} className="p-2 my-1 border-b  justify-between mx-4">
-            <p className={result.number === '200' ? 'text-green text-opacity-60 text-sm' : 'text-red-600 text-opacity-60 text-sm'}>
+            <p className={result.number === 200 ? 'text-green-700 text-opacity-60 text-sm' : 'text-red-600 text-opacity-60 text-sm'}>
               {result.number}
             </p>
             <span className="select-none text-xs italic">{result.status.error}</span>

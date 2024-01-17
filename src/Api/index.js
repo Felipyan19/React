@@ -1,6 +1,6 @@
-const END_POINT = 'https://pruebas.contactcentergrupo.com/api/public/api';
-const handleLogin = async (email, password) => {
+const END_POINT = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
+const handleLogin = async (email, password) => {
   try {
     const myHeaders = new Headers();
     myHeaders.append('Accept', 'application/json');
@@ -8,20 +8,24 @@ const handleLogin = async (email, password) => {
     const data = new FormData();
     data.append('email', email);
     data.append('password', password);
-    data.append('device_name', 'app')
-    const response = await fetch(END_POINT + '/login', {
+    data.append('device_name', 'app');
+
+    const response = await fetch(`${END_POINT}/login`, {
       method: 'POST',
       headers: myHeaders,
       body: data,
       redirect: 'follow',
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
     return result;
-
   } catch (error) {
-    console.log('Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.');
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 };
 const handleCampains = async (token) => {
@@ -37,13 +41,15 @@ const handleCampains = async (token) => {
       redirect: 'follow',
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
     return result;
-
-
   } catch (error) {
-    console.log('Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.');
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 }
 const handleUser = async (formFields) => {
@@ -68,15 +74,15 @@ const handleUser = async (formFields) => {
       redirect: 'follow',
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
-    console.log(result);
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 };
 const handleClient = async (formFields) => {
@@ -103,15 +109,15 @@ const handleClient = async (formFields) => {
       redirect: 'follow',
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
-    console.log(result);
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 }
 
@@ -127,15 +133,15 @@ const handleGetTemplate = async (token, id) => {
       redirect: 'follow',
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
-    console.log(result);
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 }
 const handleSendTemplate = async (token, client, phone, template, image) => {
@@ -158,16 +164,17 @@ const handleSendTemplate = async (token, client, phone, template, image) => {
       redirect: 'follow'
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
-    console.log(result);
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
+
 }
 const refreshTemplates = async (token, id) => {
 
@@ -183,15 +190,15 @@ const refreshTemplates = async (token, id) => {
       redirect: 'follow'
     });
 
+     if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
-    console.log(result);
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 }
 
@@ -214,16 +221,15 @@ const handleSendMensaje = async (token, client, phone, template) => {
       redirect: 'follow'
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
-    console.log(result);
-
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 }
 
@@ -240,14 +246,15 @@ const handleTokenRefresh = async (token) => {
       redirect: 'follow'
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 }
 
@@ -271,14 +278,15 @@ const handleSendEmail = async (token, total, error, complete, template) => {
       redirect: 'follow'
     });
 
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response?.statusText}`);
+    }
+
     const result = await response.json();
-
     return result;
-
   } catch (error) {
-    console.log(
-      'Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.'
-    );
+    console.error('Hubo un error en la solicitud:', error.message);
+    throw error; 
   }
 }
 
