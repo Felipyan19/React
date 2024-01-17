@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MasivosContext } from '../../Context';
 
 /**
@@ -9,6 +9,7 @@ import { MasivosContext } from '../../Context';
 const useSignIn = () => {
 
     const context = useContext(MasivosContext);
+    const [showPassword, setShowPassword] = useState(false);
 
     /**
      * Handles the change event for the email input field.
@@ -65,7 +66,8 @@ const useSignIn = () => {
       handlePasswordChange, 
       handleSubmit, 
       toggleShowPassword, 
-      handleResetPassword, 
+      handleResetPassword,
+      showPassword 
     }
   }
 

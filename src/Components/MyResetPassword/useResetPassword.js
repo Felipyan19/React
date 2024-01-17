@@ -73,15 +73,19 @@ const useResetPassword = ({params}) => {
 
         e.preventDefault();
 
+        const querystring = window.location.search
+
+        const params = new URLSearchParams(querystring)
+
         const fields = Object.fromEntries(
             new window.FormData(e.target)
         )
 
         const response = await handleNewPassword(
-            paramsJson.token, 
+            params.get('token'), 
             fields.newPassword, 
             fields.repeatNewPassword, 
-            paramsJson.email
+            params.get('email')
             )
 
         if (response.errors && response.errors.password) {

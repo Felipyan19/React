@@ -37,21 +37,23 @@ const Menu = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
                     {filteredData.map((item) => (
-                        <div className="mb-4 mx-5" 
-                           key={item.id} 
-                           >
+                        <div className="mb-4 mx-5"
+                            key={item.id}
+                        >
                             <Card data={item} />
                         </div>
                     ))
                     }
-                    
+
                 </div>
             );
         } else {
             return (
-                <div className="mt-8">
+
+                <div className="flex flex-col items-center justify-center mt-8 text-center animate-fadeIn">
+
                     <svg
-                        className="w-16 h-16 text-gray-500"
+                        className="w-20 h-20 text-gray-500 mb-4 animate-bounce"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -61,16 +63,21 @@ const Menu = () => {
                     >
                         <path d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
-                    <div className="text-center text-xl font-semibold mt-6">Ningún servicio disponible</div>
-                    <p className="text-gray-500 mt-6">
-                        Lo sentimos, actualmente no hay servicios disponibles. Vuelve más tarde.
+                    <div className="text-2xl font-semibold text-gray-800 mb-2 animate__animated animate__fadeInDown">
+                        Ningún servicio disponible
+                    </div>
+                    <p className="text-gray-600 mb-4 animate__animated animate__fadeInUp">
+                        Lo sentimos, actualmente no hay servicios disponibles.
                     </p>
+
                 </div>
+
+
             );
         }
     }
 
-    
+
     /**
      * Render a skeleton component.
      *
