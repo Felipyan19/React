@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
 
 /**
@@ -15,6 +16,12 @@ const ProtectedRoute = ({ canActivate, redirectPath = '/', children }) => {
   }
   return canActivate ? children : null;
   
+};
+
+ProtectedRoute.propTypes = {
+  canActivate: PropTypes.bool.isRequired,
+  redirectPath: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 export { ProtectedRoute };

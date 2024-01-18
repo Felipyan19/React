@@ -1,9 +1,9 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { MasivosContext } from '../../Context';
 import { useNotificationDetails } from './useNotificationDetails';
 import { ImgTemplate } from '../../Components/ImgTemplate';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-
 
 /**
  * Renderiza la sección de encabezado con el detailSend proporcionado.
@@ -29,6 +29,14 @@ const HeaderSection = ({ detailSend }) => (
   </div>
 
 );
+
+HeaderSection.propTypes = {
+  detailSend: PropTypes.shape({
+    procesado: PropTypes.number,
+    correctos: PropTypes.number,
+    incorrectos: PropTypes.number,
+  }),
+}
 
 
 /**
@@ -67,6 +75,11 @@ const BodySection = ({ numberFail, sendHistory, dataError }) => (
 
 );
 
+BodySection.propTypes = {
+  numberFail: PropTypes.number,
+  sendHistory: PropTypes.array,
+  dataError: PropTypes.array,
+}
 
 /**
  * Renderiza el componente FooterSection.
@@ -108,7 +121,15 @@ const FooterSection = ({ detailSend, excelLength, isRuning }) => {
   );
 };
 
-
+FooterSection.propTypes = {
+  detailSend: PropTypes.shape({
+    procesado: PropTypes.number,
+    correctos: PropTypes.number,
+    incorrectos: PropTypes.number,
+  }),
+  excelLength: PropTypes.number,
+  isRuning: PropTypes.bool,
+}
 /**
  * Genera el comentario de función para el cuerpo de la función en un bloque de código markdown con la sintaxis de lenguaje correcta.
  *
@@ -157,5 +178,15 @@ const MySend = () => {
     </>
   );
 };
+
+MySend.propTypes = {
+  detailSend: PropTypes.shape({
+    procesado: PropTypes.number,
+    correctos: PropTypes.number,
+    incorrectos: PropTypes.number,
+  }),
+  excelLength: PropTypes.number,
+  isRuning: PropTypes.bool,
+}
 
 export { MySend };

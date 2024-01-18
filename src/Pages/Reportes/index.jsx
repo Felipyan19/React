@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Layout } from '../../Components/Layout';
 import { MasivosContext } from '../../Context';
@@ -21,7 +21,7 @@ const Reportes = () => {
     const data = useRows();
     const table = useTable({ columns, data }, useSortBy);
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = table;
+    const {  getTableBodyProps, headerGroups, rows, prepareRow } = table;
 
     return (
         <Layout title={context.homeDataClient.attributes.name + ' - Reportes'}>
@@ -46,12 +46,14 @@ const Reportes = () => {
                         <FiDownloadCloud />
                     </NavLink>
                 </div>
+
                 <table className="min-w-full bg-white border border-gray-300 shadow-lg">
                     <thead>
                         {headerGroups.map(headerGroup => (
-                            <tr {...headerGroup.getHeaderGroupProps()}>
+                            <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map(column => (
                                     <th
+                                        key={column.id}
                                         {...column.getHeaderProps(column.getSortByToggleProps())}
                                         className={`py-2 px-4 border border-gray-300 shadow-lg ${column.isSorted
                                                 ? column.isSortedDesc
@@ -73,9 +75,9 @@ const Reportes = () => {
                         {rows.map(row => {
                             prepareRow(row);
                             return (
-                                <tr {...row.getRowProps()} className="border-t border-gray-300">
+                                <tr key={row.id} {...row.getRowProps()} className="border-t border-gray-300">
                                     {row.cells.map(cell => (
-                                        <td {...cell.getCellProps()} className="border border-gray-300 py-2 px-4">
+                                        <td key={cell.column.id} {...cell.getCellProps()} className="border border-gray-300 py-2 px-4">
                                             {cell.render('Cell')}
                                         </td>
                                     ))}
@@ -84,7 +86,6 @@ const Reportes = () => {
                         })}
                     </tbody>
                 </table>
-
             </div>
 
         </Layout>

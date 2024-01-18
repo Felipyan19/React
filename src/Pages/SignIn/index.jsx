@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { MasivosContext } from '../../Context';
 import { useSignIn } from './useSignIn';
 import { MyResetPassword } from '../../Components/MyResetPassword';
@@ -83,5 +84,9 @@ function SignIn({ params }) {
     </div>
   );
 }
+
+SignIn.propTypes = {
+  params: PropTypes.bool,  // Definir propTypes para props
+};
 
 export { SignIn };

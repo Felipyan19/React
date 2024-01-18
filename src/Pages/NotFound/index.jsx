@@ -1,4 +1,3 @@
-import React from 'react';
 import LogoError from '../../Assets/404-min.webp';
 
 /**

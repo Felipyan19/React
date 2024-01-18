@@ -1,5 +1,4 @@
-import React from 'react'
-
+import PropTypes from 'prop-types';
 /**
  * Renderiza un componente de diseño con un título y sus hijos.
  *
@@ -20,6 +19,11 @@ const Layout = ({ children, title }) => {
       </div>
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export { Layout }

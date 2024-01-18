@@ -61,7 +61,7 @@ const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
         const users = selectedUsers || [];
         formFields.tokenUser = tokenUser;
         formFields.users = users;
-        console.log(formFields);
+
         const response = await api(formFields);
 
         if (response.id) {

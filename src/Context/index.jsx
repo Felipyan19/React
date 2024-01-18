@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { 
   handleCampains, 
   handleLogin, 
@@ -116,7 +118,6 @@ export const MasivosProvider = ({ children }) => {
         handleTokenRefresh(tokenUser).then(result => {
           if (result && result.token) {
             setTokenUser(result.token);
-            console.log('Nuevo token:', result.token);
           }
         }).catch(error => {
           console.error('Error al actualizar el token:', error);
@@ -213,4 +214,8 @@ export const MasivosProvider = ({ children }) => {
       {children}
     </MasivosContext.Provider>
   );
+};
+
+MasivosProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

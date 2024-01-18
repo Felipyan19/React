@@ -34,7 +34,7 @@ const useTemplate = () => {
     const plantillaSelect = (e) => {
       const selectedTemplate = getTemplates.find(template => template.name === e.target.value);
       if (selectedTemplate) {
-        console.log(selectedTemplate);
+
           setPlantilla(selectedTemplate.name);
           setUrlImage(selectedTemplate.url);
           setIdPlantilla(selectedTemplate.id);

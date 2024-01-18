@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 /**
  * Reemplaza marcadores de posición en una cadena de plantilla con valores de un array.
  *
@@ -25,6 +26,12 @@ const VariableTemplate = ({ configStyle, body, variables}) => {
       <p>{updatedMessage}</p>
     </div>
   );
-
 }
-  export { VariableTemplate };
+
+VariableTemplate.propTypes = {
+  configStyle: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  variables: PropTypes.array.isRequired,
+};
+
+export { VariableTemplate };

@@ -35,7 +35,6 @@ const useSendExcel = () => {
     idPlantilla,
     setExcelLength,
     handleSendEmail,
-    dataError,
     variables,
     setVariablesInputs
 
@@ -134,7 +133,6 @@ const useSendExcel = () => {
    */
   const handeSend = async (item) => {
     if (variables > 0) {
-      console.log('variables');
       let mivar = []
       for (let index = 1; index <= variables; index++) { 
         mivar[index-1] = item[index+1]+'';

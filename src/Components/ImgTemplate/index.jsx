@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { MasivosContext } from '../../Context';
 import { VariableTemplate } from '../variableTemplate';
 import cel from '../../Assets/cel.svg';
@@ -23,6 +24,7 @@ const ImgTemplate = ({configStyle}) => {
       })
       .catch(error => {
         context.setIsImage(false);
+        throw error;
       });
   }, [context.urlTemplate, context.setIsImage]);
 
@@ -74,6 +76,10 @@ const ImgTemplate = ({configStyle}) => {
       </div>
     </>
   );
+}
+
+ImgTemplate.propTypes = {
+  configStyle: PropTypes.bool.isRequired,
 }
 
 export { ImgTemplate };

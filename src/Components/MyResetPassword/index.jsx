@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { MasivosContext } from '../../Context';
 import { useResetPassword } from './useResetPassword';
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -91,5 +92,9 @@ const MyResetPassword = ({ params }) => {
         </>
     );
 }
+
+MyResetPassword.propTypes = {
+    params: PropTypes.bool.isRequired
+  };
 
 export { MyResetPassword };

@@ -2,19 +2,19 @@ import { useContext } from 'react';
 import { MasivosContext } from '../../Context/index.jsx';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useFormConfig } from './useFormConfig';
+import PropTypes from 'prop-types';
 
 /**
  * Renderiza un componente de configuración de formulario.
  *
  * @param {Object} tokenUser - El token de usuario.
  * @param {string} title - El título del formulario.
- * @param {string} mode - El modo del formulario.
  * @param {Array} fields - Un array de campos de formulario.
  * @param {Object} api - El objeto de la API.
  * @param {Function} closeToast - Una función para cerrar el mensaje.
  * @return {JSX.Element} El componente de configuración de formulario renderizado.
  */
-const FormConfig = ({ tokenUser, title, mode, fields, api, closeToast }) => {
+const FormConfig = ({ tokenUser, title, fields, api, closeToast }) => {
     const context = useContext(MasivosContext);
     const {
         selectedUsers,
@@ -96,6 +96,14 @@ const FormConfig = ({ tokenUser, title, mode, fields, api, closeToast }) => {
             </div>
         </div>
     );
+};
+
+FormConfig.propTypes = {
+    tokenUser: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    fields: PropTypes.array.isRequired,
+    api: PropTypes.func.isRequired,
+    closeToast: PropTypes.func.isRequired,
 };
 
 export { FormConfig };

@@ -87,7 +87,7 @@ const handleUser = async (formFields) => {
 };
 const handleClient = async (formFields) => {
     const { tokenUser: token, name, token_meta:tokenMeta, phone_id, waba_id, users, image} = formFields;
-    console.log(formFields);
+
   try {
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");

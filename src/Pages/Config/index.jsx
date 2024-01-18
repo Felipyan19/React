@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { MasivosContext } from '../../Context/index.jsx';
 import { Layout } from '../../Components/Layout';
 import { IoListCircle } from "react-icons/io5";
@@ -39,7 +40,6 @@ const Box = ({ title, emoji }) => {
         <FormConfig
           tokenUser={context.tokenUser}
           title={title}
-          mode='Crear'
           fields={context.fieldsFormConfig[title]?.Crear?.fields}
           api={context.fieldsFormConfig[title]?.Crear?.api}
           closeToast={closeToast}
@@ -49,6 +49,10 @@ const Box = ({ title, emoji }) => {
   );
 };
 
+Box.propTypes = {
+  title: PropTypes.string.isRequired,
+  emoji: PropTypes.node.isRequired,
+};
 
 /**
  * Genera el comentario de función para el cuerpo de la función dada.
