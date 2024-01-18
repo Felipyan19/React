@@ -7,6 +7,9 @@ import Logo from '../../Assets/logo.png';
 import Login from '../../Assets/login.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
+
 
 /**
  * Renderiza el formulario de inicio de sesión.
@@ -18,14 +21,16 @@ function SignIn({ params }) {
   const context = useContext(MasivosContext);
 
   const { 
+
     handleEmailChange, 
     handlePasswordChange, 
     handleSubmit, 
     showPassword, 
     toggleShowPassword, 
-    handleResetPassword, 
-  } = useSignIn();
+    handleResetPassword,
+    handleSessionActive
 
+  } = useSignIn();
 
   return (
     <div className="h-screen w-full flex md:justify-end" style={{ backgroundImage: `url(${Login})` }}>
@@ -64,11 +69,18 @@ function SignIn({ params }) {
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash } />
               </button>
             </div>
-            <button
-              type="submit"
-              className="bg-[#0096C8] text-white w-4/6 h-8 mt-8 rounded transition-colors duration-200">
-              Ingresar
-            </button>
+            <div className='w-full flex justify-center items-center'>
+                <button
+                    type="submit"
+                    className="bg-[#0096C8] text-white w-4/6 h-8 mt-8 rounded transition-colors duration-200">
+                    Ingresar
+                </button>
+                <input type="checkbox" 
+                className='ml-6 mt-8 text-[#0096C8]'
+                data-tooltip-id="my-tooltip" data-tooltip-content="Sesión Activa"
+                onClick={handleSessionActive}
+                />
+            </div>
           </form>
            <span className="text-[#212529] font-bold mt-4 text-xs">
              ¿Olvido su contraseña?  
@@ -81,12 +93,13 @@ function SignIn({ params }) {
            <MyResetPassword params={params} />
         </div>
       </div>
+      <Tooltip id="my-tooltip" />
     </div>
   );
 }
 
 SignIn.propTypes = {
-  params: PropTypes.bool,  // Definir propTypes para props
+  params: PropTypes.bool, 
 };
 
 export { SignIn };

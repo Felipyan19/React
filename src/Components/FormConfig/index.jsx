@@ -99,7 +99,7 @@ const FormConfig = ({ tokenUser, title, fields, api, closeToast }) => {
 };
 
 FormConfig.propTypes = {
-    tokenUser: PropTypes.object.isRequired,
+    tokenUser: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     fields: PropTypes.array.isRequired,
     api: PropTypes.func.isRequired,

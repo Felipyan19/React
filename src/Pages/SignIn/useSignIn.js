@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { MasivosContext } from '../../Context';
 
 /**
@@ -49,6 +49,10 @@ const useSignIn = () => {
     const toggleShowPassword = () => {
       setShowPassword(!showPassword);
     };
+
+    const handleSessionActive = () => {
+      context.setSessionActive(!context.sessionActive);
+    }
   
   
    /**
@@ -60,14 +64,26 @@ const useSignIn = () => {
     const handleResetPassword = () => {
       context.setShowResetPassword(true)
     }
-  
+     
+    useEffect(() => {
+
+      if(localStorage.getItem('sessionActive')) {
+        const sessionActivejson = JSON.parse(localStorage.getItem('sessionActive'))
+        context.setEmail(sessionActivejson.email)
+        context.setPassword(sessionActivejson.password)
+        context.setSubmitButtonClicked(true)
+      }
+
+    }, []);
+
     return { 
       handleEmailChange, 
       handlePasswordChange, 
       handleSubmit, 
       toggleShowPassword, 
       handleResetPassword,
-      showPassword 
+      showPassword,
+      handleSessionActive 
     }
   }
 

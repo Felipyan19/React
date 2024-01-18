@@ -89,6 +89,7 @@ export const MasivosProvider = ({ children }) => {
   const [variables, setVariable] = useState(0);
   const [variablesInputs, setVariablesInputs] = useState({});
   const [getDataUsers, setGetDataUsers] = useState([])
+  const [sessionActive, setSessionActive] = useState(false)
 
   // Efecto para manejar el inicio de sesión cuando submitButtonClicked cambia
   useEffect(() => {
@@ -102,6 +103,10 @@ export const MasivosProvider = ({ children }) => {
           setUserLogin(result.data);
           setLogin(true);
           navigate('/Menu');
+          if(sessionActive){
+            const sessionActiveJson = JSON.stringify({email: email, password: password});
+            localStorage.setItem('sessionActive',sessionActiveJson)
+          }
         } else {
           Modal('error', 'Credenciales incorrectas');
           setSubmitButtonClicked(false);
@@ -208,7 +213,9 @@ export const MasivosProvider = ({ children }) => {
         variablesInputs,
         setVariablesInputs,
         getDataUsers,
-        setGetDataUsers
+        setGetDataUsers,
+        sessionActive,
+        setSessionActive
       }}
     >
       {children}

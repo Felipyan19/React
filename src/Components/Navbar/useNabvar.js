@@ -56,6 +56,7 @@ const useNabvar = () => {
       context.setSubmitButtonClicked(false);
       context.setGetDataClients([]);
       context.setLogin(false);
+      localStorage.clear();
       Modal('info', 'Sesión cerrada');
     };
   

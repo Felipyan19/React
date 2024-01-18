@@ -29,9 +29,9 @@ const VariableTemplate = ({ configStyle, body, variables}) => {
 }
 
 VariableTemplate.propTypes = {
-  configStyle: PropTypes.string.isRequired,
+  configStyle: PropTypes.bool.isRequired,
   body: PropTypes.string.isRequired,
-  variables: PropTypes.array.isRequired,
+  variables: PropTypes.object.isRequired,
 };
 
 export { VariableTemplate };

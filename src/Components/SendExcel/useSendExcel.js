@@ -66,20 +66,20 @@ const useSendExcel = () => {
    */
   useEffect(() => {
     currentIsRefresh.current = isRefresh;
-    if (!currentIsRefresh.current && !(detailSend.procesado === excelLength)) {
+    if (currentIsRefresh.current && !(detailSend.procesado === excelLength)) {
       handleBucleSend();
     }
   }, [isRefresh]);
 
   /**
    * Observa el estado de `isRuning` y desencadena `handleBucleSend` cuando
-   * `isRuning` es false.
+   * `isRuning` es true.
    *
    * @return {void}
    */
   useEffect(() => {
     currentIsRuning.current = isRuning;
-    if (!currentIsRuning.current) {
+    if (currentIsRuning.current) {
       handleBucleSend();
     }
   }, [isRuning]);

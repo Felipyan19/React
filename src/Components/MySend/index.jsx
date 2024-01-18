@@ -32,9 +32,9 @@ const HeaderSection = ({ detailSend }) => (
 
 HeaderSection.propTypes = {
   detailSend: PropTypes.shape({
-    procesado: PropTypes.number,
-    correctos: PropTypes.number,
-    incorrectos: PropTypes.number,
+    procesado: PropTypes.string,
+    correctos: PropTypes.string,
+    incorrectos: PropTypes.string,
   }),
 }
 
@@ -76,7 +76,7 @@ const BodySection = ({ numberFail, sendHistory, dataError }) => (
 );
 
 BodySection.propTypes = {
-  numberFail: PropTypes.number,
+  numberFail: PropTypes.bool,
   sendHistory: PropTypes.array,
   dataError: PropTypes.array,
 }
@@ -123,11 +123,11 @@ const FooterSection = ({ detailSend, excelLength, isRuning }) => {
 
 FooterSection.propTypes = {
   detailSend: PropTypes.shape({
-    procesado: PropTypes.number,
-    correctos: PropTypes.number,
-    incorrectos: PropTypes.number,
+    procesado: PropTypes.string,
+    correctos: PropTypes.string,
+    incorrectos: PropTypes.string,
   }),
-  excelLength: PropTypes.number,
+  excelLength: PropTypes.string,
   isRuning: PropTypes.bool,
 }
 /**
@@ -181,7 +181,7 @@ const MySend = () => {
 
 MySend.propTypes = {
   detailSend: PropTypes.shape({
-    procesado: PropTypes.number,
+    procesado: PropTypes.string,
     correctos: PropTypes.number,
     incorrectos: PropTypes.number,
   }),

@@ -76,7 +76,9 @@ const useFormConfig = ({ tokenUser, title, api, closeToast }) => {
                     Toast('success', `La campaña ${response.attributes.Client} ha cambiado su token correctamente. ${response.id}`);
                 }
             }
-        } else {
+        } else if (response.message==='Cliente Actualizado') {
+            Toast('success', response.message)
+        }else{
             Toast('error', response.message);
         }
 
